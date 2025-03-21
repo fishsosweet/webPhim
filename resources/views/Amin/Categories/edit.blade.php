@@ -9,7 +9,7 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="ten_danh_muc" class="form-label">Tên thể loại</label>
-                        <input type="text" class="form-control" id="tentheloai" name="tentheloai" value="{{old('tentheloai')}}">
+                        <input type="text" class="form-control" id="tentheloai" name="tentheloai" value="{{$Categories->name}}">
                     </div>
 
                     <div class="mb-3">
@@ -23,7 +23,7 @@
                             <label for="no_active" class="custom-control-label">Không</label>
                         </div>
                         <div class="mb-3" style="position: relative;top: 10px">
-                            <label for="created_at" class="form-label">Ngày tạo</label>
+                            <label for="created_at" class="form-label">Ngày cập nhật</label>
                             <input type="datetime-local" class="form-control" name="created_at" id="created_at">
                         </div>
                     </div>
@@ -32,13 +32,13 @@
                     <div class="mb-3">
                         <label for="anh" class="form-label">Ảnh bìa</label>
                         <input type="file" class="form-control" id="anh" name="anh" accept="image/*">
-                        <div id="image_show">
-                        </div>
+
+
                     </div>
 
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 20px">Thêm thể loại</button>
+            <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 20px">Cập nhật thể loại</button>
         </form>
     </div>
 @endsection

@@ -12,19 +12,19 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-compact-disc"></i> Thể loại
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                        <i class="fas fa-film"></i> Thể loại
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #495057">
                         <li><a class="dropdown-item" href="{{route('add-categories-get')}}"><i class="fas fa-plus"></i> Thêm thể loại</a></li>
-                        <li><a class="dropdown-item" href=""><i class="fas fa-list"></i> Danh sách các thể loại</a></li>
+                        <li><a class="dropdown-item" href="{{route('list-categories-get')}}"><i class="fas fa-list"></i> Danh sách các thể loại</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-star"></i> Phim
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #495057">
                         <li><a class="dropdown-item" href=""><i class="fas fa-plus"></i> Thêm phim</a></li>
                         <li><a class="dropdown-item" href=""><i class="fas fa-list"></i> Danh sách các phim</a></li>
                     </ul>
@@ -33,7 +33,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-music"></i> Quản lý bài hát
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #495057">
                         <li><a class="dropdown-item" href=""><i class="fas fa-plus"></i> Thêm bài hát</a></li>
                         <li><a class="dropdown-item" href=""><i class="fas fa-list"></i> Danh sách bài hát</a></li>
                     </ul>
