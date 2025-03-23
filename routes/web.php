@@ -4,6 +4,7 @@ use \App\Http\Controllers\Admin\Login\LoginController;
 use \App\Http\Controllers\Admin\HomeController;
 use \App\Http\Controllers\Admin\Categories\CategoriesController;
 use \App\Http\Controllers\Admin\Movie\MovieController;
+use \App\Http\Controllers\User\HomeKhoPhimController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -33,3 +34,6 @@ Route::middleware(['auth'])->group(function () {
 
    });
 });
+ Route::get('khophim',[HomeKhoPhimController::class,'getHomeKhoPhim'])->name('homekhophim-get');
+
+

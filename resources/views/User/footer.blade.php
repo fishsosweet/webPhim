@@ -1,4 +1,5 @@
-<footer style="position: relative;top: -20px">
+
+<footer style="position: relative;top: 10px">
     <p><a href="#">Questions? Contact us.</a></p>
     <div class="footer-links">
         <div>
@@ -30,22 +31,24 @@
 </footer>
 
 
+
+
+
 <script>
     document.getElementById("nextBtn").addEventListener("click", function() {
         let group1 = document.getElementById("group1");
         let group2 = document.getElementById("group2");
 
-        if (group1.style.display === "none") {
-            group1.style.display = "flex";
-            group2.style.display = "none";
-        } else {
-            group1.style.display = "none";
-            group2.style.display = "flex";
-        }
+        group1.style.display = "none";
+        group2.style.display = "flex";
+    });
 
-        // Đảm bảo flex hoạt động đúng khi chuyển đổi
-        group1.style.justifyContent = "center";
-        group2.style.justifyContent = "center";
+    document.getElementById("prevBtn").addEventListener("click", function() {
+        let group1 = document.getElementById("group1");
+        let group2 = document.getElementById("group2");
+
+        group1.style.display = "flex";
+        group2.style.display = "none";
     });
 
 </script>
@@ -55,7 +58,6 @@
 
 
 <script>
-    // Danh sách các ảnh background
     let backgrounds = [
         "url('images/phim2.webp')",
         "url('images/phim1.jpeg')",
@@ -80,6 +82,7 @@
 
     // Khởi chạy lần đầu
     changeBackground();
+
 </script>
 
 </body>
