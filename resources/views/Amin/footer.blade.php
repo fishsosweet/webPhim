@@ -35,5 +35,43 @@
         reader.readAsDataURL(this.files[0]);
     };
 </script>
+<script>
+    document.getElementById("trailer1").addEventListener("input", function () {
+        updateVideo(this.value, "previewTrailer1");
+    });
+
+    document.getElementById("trailer2").addEventListener("input", function () {
+        updateVideo(this.value, "previewTrailer2");
+    });
+
+    function updateVideo(url, iframeId) {
+        let videoId = extractYouTubeId(url);
+        let iframe = document.getElementById(iframeId);
+
+        if (videoId) {
+            iframe.src = `https://www.youtube.com/embed/${videoId}`;
+            iframe.classList.remove("d-none"); // Hiển thị video
+        } else {
+            iframe.src = "";
+            iframe.classList.add("d-none"); // Ẩn video nếu nhập sai link
+        }
+    }
+
+    function extractYouTubeId(url) {
+        let match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]+)/);
+        return match ? match[1] : null;
+    }
+</script>
+<script>
+    $(document).ready(function() {
+        $('#theloai').select2({
+            placeholder: "Chọn thể loại...",
+            allowClear: true
+        });
+    });
+</script>
+
+
+
 </body>
 </html>

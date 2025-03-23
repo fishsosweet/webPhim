@@ -9,7 +9,7 @@
                 <div class="card bg-primary text-white">
                     <div class="card-body">
                         <h5 class="card-title">Tổng Số Phim</h5>
-                        <h2></h2>
+                        <h2>{{$countMovies}}</h2>
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                 <div class="card bg-success text-white">
                     <div class="card-body">
                         <h5 class="card-title">Tổng Số Tài Khoản</h5>
-                        <h2></h2>
+                        <h2>{{$countUsers}}</h2>
                     </div>
                 </div>
             </div>

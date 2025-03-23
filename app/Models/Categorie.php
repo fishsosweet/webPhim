@@ -15,4 +15,8 @@ class Categorie extends Model
         'active',
         'updated_at',
     ];
+    public function movie()
+    {
+        return $this->belongsToMany(Movie::class,'movie_category','movie_id', 'category_id');
+    }
 }

@@ -7,7 +7,7 @@
             <h2 class="text-center py-4">Admin</h2>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{route('admin-home-get')}}">
                         <i class="fas fa-home"></i> Trang chính
                     </a>
                 </li>
@@ -25,8 +25,8 @@
                         <i class="fas fa-star"></i> Phim
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #495057">
-                        <li><a class="dropdown-item" href=""><i class="fas fa-plus"></i> Thêm phim</a></li>
-                        <li><a class="dropdown-item" href=""><i class="fas fa-list"></i> Danh sách các phim</a></li>
+                        <li><a class="dropdown-item" href="{{route('add-movie-get')}}   "><i class="fas fa-plus"></i>Thêm phim</a></li>
+                        <li><a class="dropdown-item" href="{{route('list-movie-get')}}"><i class="fas fa-list"></i> Danh sách các phim</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

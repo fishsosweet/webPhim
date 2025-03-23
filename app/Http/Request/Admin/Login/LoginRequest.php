@@ -18,7 +18,7 @@ class LoginRequest extends FormRequest
         return [
             'email.required'=>'Vui lòng nhập email!',
             'email.email'=>'Sai định dạng email!',
-            'password.required'=>'Vui lòng nhập mật khẩu'
+            'password.required'=>'Vui lòng nhập mật khẩu',
         ];
     }
 

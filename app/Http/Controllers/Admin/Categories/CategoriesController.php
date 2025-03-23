@@ -47,4 +47,9 @@ class CategoriesController extends Controller
         return redirect()->back();
     }
 
+    public function postXoaTheLoai($id){
+        $this->categoriesService->delete($id);
+        return redirect()->back();
+    }
+
 }

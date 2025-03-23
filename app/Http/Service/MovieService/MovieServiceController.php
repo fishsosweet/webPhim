@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Service\CategoriService;
+namespace App\Http\Service\MovieService;
 
 use App\Http\Controllers\Controller;
 use App\Models\Categorie;
-use App\Models\Song;
+use App\Models\Movie;
 use Illuminate\Support\Facades\Session;
 
-class CategoriServiceController extends Controller
+class MovieServiceController extends Controller
 {
 
-    public function list(){
-        return Categorie::select('id','name','thum','active','updated_at')->paginate(10);
+    public function list()
+    {
+        return Movie::select('id','title','description','release_year','duration','poster_url','age_restrict','active')->paginate(10);
     }
     public function post($request)
     {
@@ -26,12 +27,21 @@ class CategoriServiceController extends Controller
             else{
                 Session::flash('error','Thêm thất bại!');
             }
-            Categorie::create([
-                'name'=>$request->tentheloai,
-                'thum'=>$pathanh,
+            $movie=Movie::create([
+                'title'=>$request->tenphim,
+                'description'=>strip_tags($request->mota),
+                'release_year'=>$request->namxuatban,
+                'duration'=>$request->thoiluong,
+                'poster_url'=>$pathanh,
+                'trailer_url'=>$request->trailer,
+                'video_url'=>$request->phim,
+                'age_restrict'=>$request->luatuoi,
                 'active'=>$request->active,
             ]);
-            Session::flash('success','Thêm thể loại thành công');
+            if ($request->has('theloai')) {
+                $movie->category()->sync($request->theloai);
+            }
+            Session::flash('success','Thêm phim thành công');
         }catch (\Exception $exception){
             Session::flash('error','Thêm thất bại!'.$exception->getMessage());
         }
@@ -58,22 +68,37 @@ class CategoriServiceController extends Controller
                     throw new \Exception("File ảnh không hợp lệ.");
                 }
             }
-            Categorie::where('id', $id)->update([
-                'name' => $request->tentheloai,
-                'thum' => $pathanh ?: Categorie::find($id)->thum,
+            $movie = Movie::find($id);
+            if (!$movie) {
+                throw new \Exception("Phim không tồn tại.");
+            }
+            $movie->update([
+                'title' => $request->tenphim,
+                'description' => strip_tags($request->mota),
+                'release_year' => $request->namxuatban,
+                'duration' => $request->thoiluong,
+                'poster_url' => $pathanh ?: $movie->poster_url,
+                'trailer_url' => $request->trailer,
+                'video_url' => $request->phim,
+                'age_restrict' => $request->luatuoi,
                 'active' => $request->active,
             ]);
+            if ($request->has('theloai')) {
+                $movie->category()->sync($request->theloai);
+            }
+
             Session::flash('success', 'Cập nhật thành công');
         } catch (\Exception $exception) {
             Session::flash('error', 'Cập nhật thất bại: ' . $exception->getMessage());
         }
     }
 
+
     public function delete($id){
         try{
-        $Categorie=Categorie::find($id);
-        $Categorie->delete();
-        Session::flash('success','Xóa thể loại thành công');
+            $Movie=Movie::find($id);
+            $Movie->delete();
+            Session::flash('success','Xóa phim thành công');
         }
         catch (\Exception $exception){
             Session::flash('error','Xóa thất bại!'.$exception->getMessage());
