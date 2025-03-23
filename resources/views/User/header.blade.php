@@ -431,12 +431,15 @@
             margin: 0;
         }
 
-        .menu li {
+        .menu li a{
             margin-right: 20px;
             color: white;
             position: relative;
             cursor: pointer;
+            text-decoration: none;
+            text-align: center;
         }
+
 
         .submenu {
             display: none;
@@ -459,6 +462,28 @@
         .menu li:hover{
             background-color:  #ff7b00  ;
         }
+        .kieuchubu {
+            position: relative;
+            left: 660px;
+            top: -300px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #ff7b00, #ffdd00);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 5px rgba(255, 123, 0, 0.7);
+            animation: glowingText 1.5s infinite alternate;
+        }
+
+        @keyframes glowingText {
+            0% {
+                text-shadow: 2px 2px 5px rgba(255, 123, 0, 0.7);
+            }
+            100% {
+                text-shadow: 4px 4px 10px rgba(255, 221, 0, 0.9);
+            }
+        }
     </style>
 </head>
 <body>
@@ -469,7 +494,7 @@
 
 
     <ul class="menu">
-        <li>TRANG CHỦ</li>
+        <li><a href="{{route('homekhophim-get')}}">TRANG CHỦ</a></li>
         <li>PHIM MỚI</li>
         <li>THỂ LOẠI
             <ul class="submenu">

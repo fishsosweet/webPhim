@@ -4,6 +4,7 @@ use \App\Http\Controllers\Admin\Login\LoginController;
 use \App\Http\Controllers\Admin\HomeController;
 use \App\Http\Controllers\Admin\Categories\CategoriesController;
 use \App\Http\Controllers\Admin\Movie\MovieController;
+use \App\Http\Controllers\Admin\Slider\SliderController;
 use \App\Http\Controllers\User\HomeKhoPhimController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,14 @@ Route::middleware(['auth'])->group(function () {
        Route::get('edit-movie/{id}',[MovieController::class,'getSuaPhim'])->name('edit-movie-get');
        Route::post('edit-movie/{id}',[MovieController::class,'postSuaPhim'])->name('edit-movie-post');
        Route::delete('delete-movie/{id}',[MovieController::class,'postXoaPhim'])->name('delete-movie-post');
+
+       //Slider
+       Route::get('add-slider',[SliderController::class,'getSlider'])->name('add-slider-get');
+       Route::post('add-slider',[SliderController::class,'postSlider'])->name('add-slider-post');
+       Route::get('list-slider',[SliderController::class,'getListSlider'])->name('list-slider-get');
+       Route::get('edit-slider/{id}',[SliderController::class,'getSuaSlider'])->name('edit-slider-get');
+       Route::post('edit-slider/{id}',[SliderController::class,'postSuaSlider'])->name('edit-slider-post');
+       Route::delete('delete-slider/{id}',[SliderController::class,'postXoaSlider'])->name('delete-slider-post');
 
    });
 });

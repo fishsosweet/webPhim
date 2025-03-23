@@ -1,6 +1,6 @@
 @extends('User.main')
 @section('content')
-    <div class="TrangChu" style="position: relative;top: -47px">
+    <div class="TrangChu" style="position: relative;top: -15px">
         <div class="banner">
             <h1>Nhiều phim, nhiều hơn và nhiều hơn nữa</h1>
             <p>Starts at 70,000 đ. Cancel anytime.</p>
@@ -10,38 +10,37 @@
             </div>
         </div>
     </div>
+    <h2 class="kieuchubu" style="font-size: 40px;text-align: center;position: relative;top:100px;left: -25px;z-index: 1000">THỂ LOẠI</h2>
+    <div class="TrangChu2" style="position: relative; top: -20px;">
 
-    <div class="TrangChu2" style="position: relative;top: -20px ">
-        <div>
-            <h2 class="kieuchubu" style="position: relative; left: 660px; top: -300px">THỂ LOẠI </h2>
-        </div>
-        <div class="movie-container" style="position: relative;left: -10px">
+
+        <div class="movie-container" style="position: relative;left: 70px">
             <div class="movie-group" id="group1">
-                <div class="movie"><img src="images/phim5.jpg">
-                    <div class="kieuchu">Mắc Biết</div>
+                <div class="movie" style="width: 250px;height: 350px;background-color: #ff7b00"><img src="{{asset($Cates[0]['thum'])}}"style="width: 99%;height: 90%">
+                    <div class="kieuchu" style="color: black;font-size: 25px">{{$Cates[0]['name']}}</div>
                 </div>
-                <div class="movie"><img src="images/phim6.jpg">
-                    <div class="kieuchu">Trạng Quỳnh</div>
+                <div class="movie" style="width: 250px;height: 350px;background-color: #ff7b00"><img src="{{asset($Cates[1]['thum'])}}"style="width: 99%;height: 90%">
+                    <div class="kieuchu" style="color: black;font-size: 25px">{{$Cates[1]['name']}}</div>
                 </div>
-                <div class="movie"><img src="images/phim3.jpg">
-                    <div class="kieuchu">Bố Già</div>
+                <div class="movie" style="width: 250px;height: 350px;background-color: #ff7b00"><img src="{{asset($Cates[2]['thum'])}}"style="width: 99%;height: 90%">
+                    <div class="kieuchu" style="color: black;font-size: 25px">{{$Cates[2]['name']}}</div>
                 </div>
-                <div class="movie"><img src="images/phim4.jpg">
-                    <div class="kieuchu">Ironman</div>
+                <div class="movie" style="width: 250px;height: 350px;background-color: #ff7b00"><img src="{{asset($Cates[3]['thum'])}}"style="width: 99%;height: 90%">
+                    <div class="kieuchu" style="color: black;font-size: 25px">{{$Cates[3]['name']}}</div>
                 </div>
             </div>
             <div class="movie-group" id="group2" style="display: none;">
-                <div class="movie"><img src="images/phim7.jpg">
-                    <div class="kieuchu">Người đẹp và quái vật</div>
+                <div class="movie" style="width: 250px;height: 350px;background-color: #ff7b00"><img src="{{asset($Cates[4]['thum'])}}"style="width: 99%;height: 90%">
+                    <div class="kieuchu" style="color: black;font-size: 25px">{{$Cates[4]['name']}}</div>
                 </div>
-                <div class="movie"><img src="images/phim11.jpg">
-                    <div class="kieuchu">Trận chiến cuối</div>
+                <div class="movie" style="width: 250px;height: 350px;background-color: #ff7b00"><img src="{{asset($Cates[5]['thum'])}}"style="width: 99%;height: 90%">
+                    <div class="kieuchu" style="color: black;font-size: 25px">{{$Cates[5]['name']}}</div>
                 </div>
-                <div class="movie"><img src="images/phim12.jpg">
-                    <div class="kieuchu">Herry Potter</div>
+                <div class="movie" style="width: 250px;height: 350px;background-color: #ff7b00"><img src="{{asset($Cates[6]['thum'])}}"style="width: 99%;height: 90%">
+                    <div class="kieuchu" style="color: black;font-size: 25px">{{$Cates[6]['name']}}</div>
                 </div>
-                <div class="movie"><img src="images/phim10.jpg">
-                    <div class="kieuchu">Cướp biển vùng Caribe</div>
+                <div class="movie" style="width: 250px;height: 350px;background-color: #ff7b00"><img src="{{asset($Cates[7]['thum'])}}"style="width: 99%;height: 90%">
+                    <div class="kieuchu" style="color: black;font-size: 25px">{{$Cates[7]['name']}}</div>
                 </div>
 
             </div>
@@ -142,4 +141,9 @@
         </div>
     </div>
 
+@endsection
+@section('footer')
+    @php
+        $sliderFooter=$Sliders
+    @endphp
 @endsection

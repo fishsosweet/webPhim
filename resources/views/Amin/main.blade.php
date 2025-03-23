@@ -13,7 +13,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                        <i class="fas fa-film"></i> Thể loại
+                        <i class="fas fa-star"></i> Thể loại
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #495057">
                         <li><a class="dropdown-item" href="{{route('add-categories-get')}}"><i class="fas fa-plus"></i> Thêm thể loại</a></li>
@@ -22,7 +22,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-star"></i> Phim
+                        <i class="fas fa-film"></i> Phim
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #495057">
                         <li><a class="dropdown-item" href="{{route('add-movie-get')}}   "><i class="fas fa-plus"></i>Thêm phim</a></li>
@@ -31,11 +31,11 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-music"></i> Quản lý bài hát
+                        <i class="fas fa-sliders-h"></i> Slider
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #495057">
-                        <li><a class="dropdown-item" href=""><i class="fas fa-plus"></i> Thêm bài hát</a></li>
-                        <li><a class="dropdown-item" href=""><i class="fas fa-list"></i> Danh sách bài hát</a></li>
+                        <li><a class="dropdown-item" href="{{route('add-slider-get')}}"><i class="fas fa-plus"></i> Thêm slider</a></li>
+                        <li><a class="dropdown-item" href="{{route('list-slider-get')}}"><i class="fas fa-list"></i> Danh sách slider</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -52,4 +52,5 @@
         </div>
     </div>
 </div>
+@yield('footer')
 @include('Amin.footer')

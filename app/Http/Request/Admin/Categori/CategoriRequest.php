@@ -10,7 +10,7 @@ class CategoriRequest extends FormRequest
     {
         return [
             'tentheloai'=>'required',
-            'anh'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'anh'=>'required|image',
         ];
     }
 

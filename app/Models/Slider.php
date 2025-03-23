@@ -6,16 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Categorie extends Model
+class Slider extends Model
 {
     use HasFactory;
     protected $fillable=[
         'name',
         'thum',
-        'active',
+        'sort',
+        'active'
     ];
-    public function movie()
-    {
-        return $this->belongsToMany(Movie::class,'movie_category','movie_id', 'category_id');
-    }
 }

@@ -13,7 +13,7 @@ class MovieRequest extends FormRequest
             'mota' => 'required',
             'namxuatban' => 'required|integer|min:1900|max:2100',
             'thoiluong' => 'required|integer|min:30|max:500',
-            'anh'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'anh'=>'required|image',
             'trailer'=>'required',
             'phim'=>'required',
             'theloai' => 'required|array',

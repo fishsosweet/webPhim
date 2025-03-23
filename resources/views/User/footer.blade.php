@@ -59,9 +59,9 @@
 
 <script>
     let backgrounds = [
-        "url('images/phim2.webp')",
-        "url('images/phim1.jpeg')",
-        "url('images/phim3.jpg')"
+        @foreach($sliderFooter as $slider)
+            "url('{{ $slider->thum }}')",
+        @endforeach
     ];
 
     let currentIndex = 0;
