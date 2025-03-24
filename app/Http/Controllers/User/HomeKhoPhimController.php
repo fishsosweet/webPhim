@@ -23,13 +23,16 @@ class HomeKhoPhimController extends Controller
         $sliders = $this->homeMovieService->getSlides();
         $phimMoi = $this->homeMovieService->getPhimMoi();
         $phimKinhDi=$this->homeMovieService->getPhimKinhDi();
+        $randPhim=$this->homeMovieService->randPhim();
         $phimHoatHinh=$this->homeMovieService->getHoatHinh();
         return view('User.home',[
+            'Categories'=>Categorie::all(),
             'Sliders' => $sliders,
             'Cates' => $cates->toArray(),
             'phimMoi' => $phimMoi,
             'phimKinhDi' => $phimKinhDi,
             'phimHoatHinh' => $phimHoatHinh,
+            'randomPhim' => $randPhim,
         ]);
 
     }

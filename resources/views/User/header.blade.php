@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,6 +50,32 @@
             scrollbar-color: #555 #222;
         }
 
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            border-radius: 50%;
+            opacity: 0;
+            padding-left: 5px;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .movie:hover .play-button {
+            opacity: 1;
+        }
+
+        .movie:hover img {
+            filter: blur(0.5px);
+        }
+
         .movie {
             flex: 0 0 auto;
             width: 180px;
@@ -98,11 +123,13 @@
             background-color: #000022;
 
         }
+
         * {
             padding: 0;
             margin-left: auto;
             margin-right: auto;
         }
+
         .TrangChu {
             width: 1520px;
             position: relative;
@@ -111,6 +138,7 @@
             overflow: hidden;
             transition: background 1s ease-in-out;
         }
+
         .TrangChu2 {
             background-color: #000022;
             width: 1520px;
@@ -132,33 +160,37 @@
             height: 1300px;
             overflow: hidden;
         }
+
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #1f1f1f;
             padding: 15px 30px;
         }
+
         .logo {
             font-size: 24px;
             font-weight: bold;
             color: #ff7b00;;
             margin-left: 20px;
         }
+
         .sign-in {
             background-color: #ff7b00;;
             padding: 8px 15px;
             border-radius: 5px;
             text-decoration: none;
             color: white;
-            margin-right: 20px;
+            margin-right: 50px;
         }
+
         .menu {
-            background: #222;
+
             display: flex;
             padding: 10px;
             z-index: 1000;
         }
+
         .menu > li {
             list-style: none;
             position: relative;
@@ -166,10 +198,9 @@
             color: white;
             cursor: pointer;
         }
-        .menu > li:hover {
-            background: #444;
 
-        }
+
+
         .submenu {
             display: none;
             position: absolute;
@@ -178,15 +209,16 @@
             left: 0;
             min-width: 150px;
         }
+
         .submenu li {
             list-style: none;
             padding: 10px;
             color: white;
             cursor: pointer;
         }
-        .submenu li:hover {
-            background: #555;
-        }
+
+
+
         .menu > li:hover .submenu {
             display: block;
         }
@@ -195,25 +227,30 @@
             text-align: center;
             padding: 100px 20px;
         }
+
         .banner h1 {
             font-size: 48px;
             font-weight: bold;
             color: white;
         }
+
         .banner p {
             font-size: 20px;
             margin-top: 10px;
             color: white;
         }
+
         .email-box {
             margin-top: 20px;
         }
+
         .email-box input {
             padding: 10px;
             width: 300px;
             border: none;
             border-radius: 5px;
         }
+
         .email-box button {
             padding: 10px 15px;
             background-color: #ff7b00;;
@@ -222,6 +259,7 @@
             color: white;
             cursor: pointer;
         }
+
         .movie-container {
             display: flex;
             justify-content: center; /* Căn giữa các ảnh */
@@ -243,29 +281,34 @@
         .movie:hover {
             transform: scale(1.1);
         }
+
         .movie img {
             width: 100%;
             border-radius: 5px;
         }
+
         .movie-title {
             margin-top: 10px;
             font-size: 18px;
             font-weight: bold;
         }
+
         .movie-group {
             display: flex; /* Đảm bảo luôn hiển thị ngang */
             justify-content: center;
             gap: 20px;
         }
 
-        .kieuchu{
+        .kieuchu {
             font-size: 18px;
             color: white;
         }
-        .kieuchubu{
+
+        .kieuchubu {
             font-size: 30px;
             color: white;
         }
+
         #nextBtn {
             background-color: #ff7b00;;
             color: white;
@@ -288,6 +331,7 @@
         #nextBtn:hover {
             transform: scale(1.1);
         }
+
         #prevBtn {
             background-color: #ff7b00;;
             color: white;
@@ -361,7 +405,8 @@
             font-size: 14px;
             color: #666;
         }
-        .  .TrangChu4 {
+
+        . .TrangChu4 {
             background-color: #000022;
             width: 1520px;
             position: relative;
@@ -369,18 +414,21 @@
             height: 1000px;
             overflow: hidden;
         }
+
         .ranking {
             width: 300px;
             background-color: #1e1e1e;
             padding: 15px;
             border-radius: 8px;
         }
+
         .ranking h2 {
             color: #ff7b00;
             text-transform: uppercase;
             border-bottom: 2px solid #ff7b00;
             padding-bottom: 5px;
         }
+
         .ranking-item {
             display: flex;
             align-items: center;
@@ -390,10 +438,12 @@
             margin: 5px 0;
             border-radius: 5px;
         }
+
         .ranking-item span {
             font-weight: bold;
             color: white;
         }
+
         .rank-number {
             background-color: #ff7b00;
             color: white;
@@ -401,12 +451,21 @@
             border-radius: 50%;
             font-size: 14px;
         }
+
         .nav-container {
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9000;
             display: flex; /* Xếp các phần tử theo hàng ngang */
             align-items: center; /* Căn giữa theo chiều dọc */
             justify-content: space-between; /* Canh đều giữa header và menu */
             padding: 10px 20px;
-            background-color: #222; /* Tuỳ chỉnh màu nền */
+            background-color: rgba(0, 0, 0, 0.0); /* Tuỳ chỉnh màu nền */
+            transition: background-color 0.25s ease-in-out; /* Hiệu ứng chuyển mượt */
+        }
+        .nav-container.scrolled {
+            background-color: rgba(0, 0, 0, 1.0); /* Khi cuộn xuống thì nền đậm hơn */
         }
 
         .header {
@@ -429,12 +488,13 @@
 
         .menu {
             list-style: none;
+            padding: 10px;
             display: flex;
             padding: 0;
             margin: 0;
         }
 
-        .menu li a{
+        .menu li a {
             margin-right: 20px;
             color: white;
             position: relative;
@@ -442,12 +502,15 @@
             text-decoration: none;
             text-align: center;
         }
+
         .truncate-2-lines {
             display: -webkit-box;
             -webkit-line-clamp: 2; /* Giới hạn tối đa 2 dòng */
             -webkit-box-orient: vertical;
             overflow: hidden;
-            font-family: 'Be Vietnam Pro', sans-serif;;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 0.85rem; /* Giữa h4 và h5 */
+            font-weight: bold;
         }
 
         .submenu {
@@ -457,10 +520,12 @@
             padding: 0;
             margin: 0;
         }
-        .submenu li{
+
+        .submenu li {
             width: 70px;
             font-size: 13px;
         }
+
         .menu li:hover .submenu {
             display: grid;
             grid-template-columns: repeat(5, auto);
@@ -468,9 +533,11 @@
             gap: 5px;
 
         }
-        .menu li:hover{
-            background-color:  #ff7b00  ;
+
+        .menu li:hover {
+            color: #ff7b00;
         }
+
         .kieuchubu {
             position: relative;
             left: 660px;
@@ -493,57 +560,67 @@
                 text-shadow: 4px 4px 10px rgba(255, 221, 0, 0.9);
             }
         }
+
+        .last-main-container {
+
+            width: 85%;
+            height: auto;
+            margin-bottom: 150px;
+            margin-top: 150px;
+        }
+        .section-divider {
+            width: 100%;
+            height: 3px;
+            background-color: #ff7b00;
+            position: relative;
+            top:-5px;
+        }
+.menu li a:hover{
+    color:#ff7b00 ;
+}
     </style>
 </head>
 <body>
 
-<div class="nav-container" style="position:relative;top: -10px">
+<div class="nav-container" style="position: fixed;">
     <div class="logo" style="color:  #ff7b00  ;">KHOPHIM</div>
     <div class="header">
+        <ul class="menu">
+            <li><a href="{{route('homekhophim-get')}}" STYLE="font-size: 18px">TRANG CHỦ</a></li>
+            <li>PHIM MỚI</li>
+            <li>THỂ LOẠI
+                <ul class="submenu">
+                    @foreach($categories as $cates)
+                        <li>{{$cates->name}}</li>
+                    @endforeach
 
+                </ul>
+            </li>
+            <li>QUỐC GIA
+                <ul class="submenu">
+                    <li>Việt Nam</li>
+                    <li>Hàn Quốc</li>
+                    <li>Nhật Bản</li>
+                    <li>Mỹ</li>
+                    <li>Trung Quốc</li>
+                    <li>Thái Lan</li>
+                    <li>Pháp</li>
+                    <li>Ấn Độ</li>
+                    <li>Anh</li>
+                    <li>Đức</li>
+                </ul>
+            </li>
+            <li>ĐỘ TUỔI
+                <ul class="submenu">
+                    <li>Mọi lứa tuổi</li>
+                    <li>13+</li>
+                    <li>16+</li>
+                    <li>18+</li>
+                </ul>
+            </li>
 
-    <ul class="menu">
-        <li><a href="{{route('homekhophim-get')}}">TRANG CHỦ</a></li>
-        <li>PHIM MỚI</li>
-        <li>THỂ LOẠI
-            <ul class="submenu">
-                <li>Cổ Trang</li>
-                <li>Hành Động</li>
-                <li>Tâm Lý</li>
-                <li>Chính Kịch</li>
-                <li>Hình Sự</li>
-                <li>Tình Cảm</li>
-                <li>Bí Ẩn</li>
-                <li>Khoa Học</li>
-                <li>Viễn Tưởng</li>
-                <li>Võ Thuật</li>
-            </ul>
-        </li>
-        <li>QUỐC GIA
-            <ul class="submenu">
-                <li>Việt Nam</li>
-                <li>Hàn Quốc</li>
-                <li>Nhật Bản</li>
-                <li>Mỹ</li>
-                <li>Trung Quốc</li>
-                <li>Thái Lan</li>
-                <li>Pháp</li>
-                <li>Ấn Độ</li>
-                <li>Anh</li>
-                <li>Đức</li>
-            </ul>
-        </li>
-        <li>ĐỘ TUỔI
-            <ul class="submenu">
-                <li>Mọi lứa tuổi</li>
-                <li>13+</li>
-                <li>16+</li>
-                <li>18+</li>
-            </ul>
-        </li>
-
-        <li>LIÊN HỆ</li>
-    </ul>
+            <li>LIÊN HỆ</li>
+        </ul>
 
     </div>
     <a href="#" class="sign-in">Sign In</a>

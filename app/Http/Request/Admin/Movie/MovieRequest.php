@@ -15,7 +15,6 @@ class MovieRequest extends FormRequest
             'namxuatban' => 'required|integer|min:1900|max:2100',
             'thoiluong' => 'required|integer|min:30|max:500',
             'anh'=>'required|image',
-            'trailer'=>'required',
             'phim'=>'required',
             'theloai' => 'required|array',
         ];
@@ -32,7 +31,6 @@ class MovieRequest extends FormRequest
             'thoiluong.min'=>'Nhập tối thiểu từ 30 - 500 phút',
             'thoiluong.max'=>'Nhập tối thiểu từ 30 - 500 phút',
             'anh.required'=>'Vui lòng nhập ảnh',
-            'trailer.required'=>'Vui lòng link trailer',
             'phim.required'=>'Vui lòng link phim',
             'theloai.required'=>'Vui lòng chọn thể loại',
         ];

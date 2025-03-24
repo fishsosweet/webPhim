@@ -1,3 +1,4 @@
+@yield('header')
 @include('User.header')
 @yield('content')
 @yield('footer')

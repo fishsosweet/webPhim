@@ -10,9 +10,14 @@ use Carbon\Carbon;
 
 class HomeMovieServiceController extends Controller
 {
+
+    public function randPhim()
+    {
+        return Movie::inRandomOrder()->where('active','1')->limit(12)->get();
+    }
     public function getPhimKinhDi()
     {
-        return Movie::where('created_at', '>=', Carbon::now()->subDays(7))
+        return Movie::where('created_at', '>=', Carbon::now()->subDays(7))->where('active','1')
             ->whereHas('category', function ($query) {
                 $query->where('name', 'Kinh dị');
             })
@@ -23,11 +28,11 @@ class HomeMovieServiceController extends Controller
 
     public function getPhimMoi()
     {
-        return Movie::where('created_at', '>=', Carbon::now()->subDays(7))->limit(3)->get();
+        return Movie::where('created_at', '>=', Carbon::now()->subDays(7))->where('active','1')->limit(3)->get();
     }
 
     public function getHoatHinh(){
-        return Movie::where('created_at', '>=', Carbon::now()->subDays(7))
+        return Movie::where('created_at', '>=', Carbon::now()->subDays(7))->where('active','1')
             ->whereHas('category', function ($query) {
                 $query->where('name', 'Hoạt hình');
             })
