@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
     <title>KhoPhim</title>
     <style>
         .main-container {
@@ -93,7 +95,8 @@
         body {
             overflow-x: hidden;
             height: auto;
-            background-color: #000022
+            background-color: #000022;
+
         }
         * {
             padding: 0;
@@ -439,7 +442,13 @@
             text-decoration: none;
             text-align: center;
         }
-
+        .truncate-2-lines {
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Giới hạn tối đa 2 dòng */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-family: 'Be Vietnam Pro', sans-serif;;
+        }
 
         .submenu {
             display: none;

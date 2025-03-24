@@ -30,7 +30,7 @@ class MovieServiceController extends Controller
             $movie=Movie::create([
                 'title'=>$request->tenphim,
                 'description'=>strip_tags($request->mota),
-                'contry'=>$request->quocgia,
+                'country'=>$request->quocgia,
                 'release_year'=>$request->namxuatban,
                 'duration'=>$request->thoiluong,
                 'poster_url'=>$pathanh,

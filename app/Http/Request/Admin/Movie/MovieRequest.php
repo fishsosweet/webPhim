@@ -11,6 +11,7 @@ class MovieRequest extends FormRequest
         return [
             'tenphim' => 'required',
             'mota' => 'required',
+
             'namxuatban' => 'required|integer|min:1900|max:2100',
             'thoiluong' => 'required|integer|min:30|max:500',
             'anh'=>'required|image',

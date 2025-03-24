@@ -14,7 +14,7 @@
                     <div class="mb-3">
                         <label for="mo_ta" class="form-label">Mô tả</label>
 
-                        <textarea class="form-control" name="mota" id="mota" rows="3" placeholder="Enter content"></textarea>
+                        <textarea class="form-control" name="mota" id="mota" rows="3" placeholder="Enter content">{{$Movie->description}}</textarea>
                     </div>
                     <div class="row">
                         <div class="col-md-6">

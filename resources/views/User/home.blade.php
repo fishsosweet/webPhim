@@ -14,7 +14,7 @@
     <div class="TrangChu2" style="position: relative; top: -20px;">
 
 
-        <div class="movie-container" style="position: relative;left: 70px">
+        <div class="movie-container" style="position: relative;left: 70px; font-family: 'Be Vietnam Pro', sans-serif;;">
             <div class="movie-group" id="group1">
                 <div class="movie" style="width: 250px;height: 350px;background-color: #ff7b00"><img src="{{asset($Cates[0]['thum'])}}"style="width: 99%;height: 90%">
                     <div class="kieuchu" style="color: black;font-size: 25px">{{$Cates[0]['name']}}</div>
@@ -50,57 +50,60 @@
     </div>
     <div class="main-container">
         <div class="left-container">
+
             <div class="kho-phim">
-                <h2 class="section-title"><a class="nav-link" href="#" style="text-decoration: none;color: #ff7b00 ">Phim hành động</a></h2>
+                <h2 class="section-title"><a class="nav-link" href="#" style="text-decoration: none;color: #ff7b00 ">Phim mới ></a></h2>
                 <div class="movie-slider">
-                    <div class="movie">
-                        <img src="images/phim5.jpg">
-                        <div class="movie-info">
-                            <h3>Sói 200%</h3>
-                            <span>2024 • 98 phút</span>
+                    @foreach($phimMoi as $phim)
+                        <a href="#" style="text-decoration: none; color: black">
+                        <div class="movie" style="width: 220px;height: 300px;background-color: #ff7b00">
+                            <img src="{{$phim->poster_url}}" style="width: 99%;height: 80%">
+
+                            <div class="movie-info" style="position: relative;top:-20px">
+                                <h4 class="truncate-2-lines">{{$phim->title}}</h4>
+                                <span style="position: relative;top: -20px">{{$phim->release_year}} | {{$phim->duration}}p</span>
+                            </div>
+
                         </div>
-                    </div>
-                    <div class="movie">
-                        <img src="images/phim6.jpg">
-                        <div class="movie-info">
-                            <h3>Nữ Tu Bóng Tối</h3>
-                            <span>2025 • 115 phút</span>
-                        </div>
-                    </div>
-                    <div class="movie">
-                        <img src="images/phim3.jpg">
-                        <div class="movie-info">
-                            <h3>Yêu Là Đau</h3>
-                            <span>2025 • 83 phút</span>
-                        </div>
-                    </div>
+                        </a>
+                    @endforeach
                 </div>
             </div>
 
             <div class="kho-phim">
-                <h2 class="section-title"><a class="nav-link" href="#" style="text-decoration: none;color: #ff7b00 ">Phim khoa học</a></h2>
+                <h2 class="section-title"><a class="nav-link" href="#" style="text-decoration: none;color: #ff7b00 ">Phim kinh dị ></a></h2>
                 <div class="movie-slider">
-                    <div class="movie">
-                        <img src="images/phim5.jpg">
-                        <div class="movie-info">
-                            <h3>Sói 200%</h3>
-                            <span>2024 • 98 phút</span>
-                        </div>
-                    </div>
-                    <div class="movie">
-                        <img src="images/phim6.jpg">
-                        <div class="movie-info">
-                            <h3>Nữ Tu Bóng Tối</h3>
-                            <span>2025 • 115 phút</span>
-                        </div>
-                    </div>
-                    <div class="movie">
-                        <img src="images/phim3.jpg">
-                        <div class="movie-info">
-                            <h3>Yêu Là Đau</h3>
-                            <span>2025 • 83 phút</span>
-                        </div>
-                    </div>
+                    @foreach($phimKinhDi as $phim)
+                        <a href="#" style="text-decoration: none; color: black">
+                            <div class="movie" style="width: 220px;height: 300px;background-color: #ff7b00">
+                                <img src="{{$phim->poster_url}}" style="width: 99%;height: 80%">
+
+                                <div class="movie-info" style="position: relative;top:-20px">
+                                    <h4 class="truncate-2-lines">{{$phim->title}}</h4>
+                                    <span style="position: relative;top: -20px">{{$phim->release_year}} | {{$phim->duration}}p</span>
+                                </div>
+
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="kho-phim">
+                <h2 class="section-title"><a class="nav-link" href="#" style="text-decoration: none;color: #ff7b00 ">Phim họoạt hình ></a></h2>
+                <div class="movie-slider">
+                    @foreach($phimHoatHinh as $phim)
+                        <a href="#" style="text-decoration: none; color: black">
+                            <div class="movie" style="width: 220px;height: 300px;background-color: #ff7b00">
+                                <img src="{{$phim->poster_url}}" style="width: 99%;height: 80%">
+                                <div class="movie-info" style="position: relative;top:-20px">
+                                    <h4 class="truncate-2-lines">{{$phim->title}}</h4>
+                                    <span style="position: relative;top: -20px">{{$phim->release_year}} | {{$phim->duration}}p</span>
+                                </div>
+
+                            </div>
+                        </a>
+                    @endforeach
                 </div>
             </div>
 

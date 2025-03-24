@@ -3,18 +3,33 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Service\MovieService\HomeMovieServiceController;
 use App\Models\Categorie;
+use App\Models\Movie;
 use App\Models\Slider;
+use Carbon\Carbon;
 
 class HomeKhoPhimController extends Controller
 {
+
+    protected $homeMovieService;
+
+    public function __construct(HomeMovieServiceController $homeMovieService){
+        $this->homeMovieService = $homeMovieService;
+    }
     public function getHomeKhoPhim()
     {
-        $cates=Categorie::select('id','thum','name')->where('active','1')->get();
-        $sliders = Slider::select('thum')->where('active','1')->orderBy('sort', 'asc')->get();
+        $cates=$this->homeMovieService->getCates();
+        $sliders = $this->homeMovieService->getSlides();
+        $phimMoi = $this->homeMovieService->getPhimMoi();
+        $phimKinhDi=$this->homeMovieService->getPhimKinhDi();
+        $phimHoatHinh=$this->homeMovieService->getHoatHinh();
         return view('User.home',[
             'Sliders' => $sliders,
             'Cates' => $cates->toArray(),
+            'phimMoi' => $phimMoi,
+            'phimKinhDi' => $phimKinhDi,
+            'phimHoatHinh' => $phimHoatHinh,
         ]);
 
     }
