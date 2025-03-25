@@ -124,11 +124,11 @@
 <div class="container">
     <div class="form-box">
 
-        <form id="login-form" class="form"  method="POST">
+        <form id="login-form" class="form"  method="POST" action="">
             @csrf
             <h2>Đăng nhập</h2>
             @include('Amin.error')
-            <button type="button" class="btn google-btn" formaction="">
+            <button type="button" class="btn google-btn" formaction="{{route('login-khophim-post')}}">
                 <i class="fab fa-google" style="margin-right: 20px;"></i> Đăng nhập bằng Google
             </button>
             <input type="text" name="email"  placeholder="Email hoặc số điện thoại" required>
@@ -137,29 +137,32 @@
             <p>Bạn chưa có tài khoản? <a href="#" id="show-register">Đăng ký ngay</a></p>
         </form>
 
-        <form id="register-form" class="form hidden">
+        <form id="register-form" class="form hidden" action="{{route('register-khophim-post')}}" method="POST">
             @csrf
             <h2>Đăng ký</h2>
             <input type="text" placeholder="Tên đầy đủ"  name="name" required>
             <input type="email" placeholder="Email"  name="email"  required>
-            <input type="password" placeholder="password" required>
-            <input type="password" placeholder="Xác nhận mật khẩu" placeholder="rePassword" required>
-            <button type="submit" class="btn">Đăng ký</button>
+            <input type="password" placeholder="password" name="password"required>
+            <input type="password" placeholder="Xác nhận mật khẩu" name="rePassword" required>
+            <button type="submit" class="btn" >Đăng ký</button>
             <p>Bạn đã có tài khoản? <a href="#" id="show-login">Đăng nhập</a></p>
         </form>
     </div>
 </div>
 
 <script>
-    document.getElementById("show-register").addEventListener("click", function() {
+    document.getElementById("show-register").addEventListener("click", function (e) {
+        e.preventDefault();
         document.getElementById("login-form").classList.add("hidden");
         document.getElementById("register-form").classList.remove("hidden");
     });
 
-    document.getElementById("show-login").addEventListener("click", function() {
+    document.getElementById("show-login").addEventListener("click", function (e) {
+        e.preventDefault();
         document.getElementById("register-form").classList.add("hidden");
         document.getElementById("login-form").classList.remove("hidden");
     });
+
 </script>
 </body>
 </html>

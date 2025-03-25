@@ -76,10 +76,10 @@ class MovieServiceController extends Controller
             $movie->update([
                 'title' => $request->tenphim,
                 'description' => strip_tags($request->mota),
-                'contry'=>$request->quocgia,
+                'country'=>$request->quocgia,
                 'release_year' => $request->namxuatban,
                 'duration' => $request->thoiluong,
-                'poster_url' => $pathanh ?: $movie->poster_url,
+                'poster_url' => $pathanh,
                 'trailer_url' => $request->trailer,
                 'video_url' => $request->phim,
                 'age_restrict' => $request->luatuoi,

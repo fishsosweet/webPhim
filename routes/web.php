@@ -49,10 +49,12 @@ Route::middleware([\App\Http\Middleware\AdminAuthMiddleware::class])->group(func
  Route::get('khophim',[HomeKhoPhimController::class,'getHomeKhoPhim'])->name('homekhophim-get');
  Route::get('khophim/login',[LoginUserController::class,'getLoginUser'])->name('login-khophim-get');
 Route::post('khophim/login',[LoginUserController::class,'postLoginUser'])->name('login-khophim-post');
+Route::post('khophim/register',[LoginUserController::class,'postDangKyUser'])->name('register-khophim-post');
 Route::get('logout',[LoginUserController::class,'getLogoutUser'])->name('logout-khophim-get');
 Route::middleware([UserAuthMiddleware::class])->group(function () {
     Route::prefix('khophim')->group(function () {
         Route::get('categories/{id}-{name}', [CategoriesUserController::class, 'getTheLoai'])->name('khophim-categories-get');
+        Route::get('country/{country}',[CategoriesUserController::class, 'getQuocGia'])->name('khophim-country-get');
     });
 });
 

@@ -19,23 +19,22 @@
             <li>THỂ LOẠI
                 <ul class="submenu">
                     @foreach($categories as $cates)
-                        <li><a href="{{ route('khophim-categories-get', ['id' => $cates->id, 'name' => Str::slug($cates->name)])}}">{{$cates->name}}</a></li>
+                        <li><a href="{{route('khophim-categories-get', ['id' => $cates->id, 'name' => Str::slug($cates->name)])}}">{{$cates->name}}</a></li>
                     @endforeach
-
                 </ul>
             </li>
             <li>QUỐC GIA
                 <ul class="submenu">
-                    <li>Việt Nam</li>
-                    <li>Hàn Quốc</li>
-                    <li>Nhật Bản</li>
-                    <li>Mỹ</li>
-                    <li>Trung Quốc</li>
-                    <li>Thái Lan</li>
-                    <li>Pháp</li>
-                    <li>Ấn Độ</li>
-                    <li>Anh</li>
-                    <li>Đức</li>
+                    <li><a href="{{route('khophim-country-get',['country' => 'Việt Nam'])}}" style="text-decoration: none">Việt Nam</a></li>
+                    <li><a href="{{route('khophim-country-get',['country' => 'Hàn Quốc'])}}" style="text-decoration: none">Hàn Quốc</a></li>
+                    <li><a href="{{route('khophim-country-get',['country' => 'Nhật Bản'])}}" style="text-decoration: none">Nhật Bản</a></li>
+                    <li><a href="{{route('khophim-country-get',['country' => 'Mỹ'])}}" style="text-decoration: none">Mỹ</a></li>
+                    <li><a href="{{route('khophim-country-get',['country' => 'Trung Quốc'])}}" style="text-decoration: none">Trung Quốc</a></li>
+                    <li><a href="{{route('khophim-country-get',['country' => 'Thái Lan'])}}" style="text-decoration: none">Thái Lan</a></li>
+                    <li><a href="{{route('khophim-country-get',['country' => 'Pháp'])}}" style="text-decoration: none">Pháp</a></li>
+                    <li><a href="{{route('khophim-country-get',['country' => 'Ấn Độ'])}}" style="text-decoration: none">Ấn Độ</a></li>
+                    <li><a href="{{route('khophim-country-get',['country' => 'Anh'])}}" style="text-decoration: none">Anh</a></li>
+                    <li><a href="{{route('khophim-country-get',['country' => 'Đức'])}}" style="text-decoration: none">Đức</a></li>
                 </ul>
             </li>
             <li>ĐỘ TUỔI

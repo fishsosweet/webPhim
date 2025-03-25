@@ -28,6 +28,17 @@ class CategoriesUserController extends Controller
             'Categories'=>$cates,
             'Phim'=>$movie
         ]);
+    }
 
+    public function getQuocGia($country){
+        $cates=$this->homeMovieService->getCates();
+        $sliders = $this->homeMovieService->getSlides();
+        $movie=Movie::where('country',urldecode($country))->get();
+        return view('User.Categories.cates',[
+            'title'=>urldecode($country),
+            'Sliders' => $sliders,
+            'Categories'=>$cates,
+            'Phim'=>$movie
+        ]);
     }
 }

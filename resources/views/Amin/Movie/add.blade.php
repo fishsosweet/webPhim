@@ -49,17 +49,18 @@
                             <div class="mb-3" style="position: relative;top: 27px">
                                 <label for="quocgia" class="form-label">Quốc gia:</label>
                                 <select id="quocgia" name="quocgia" class="form-select">
-                                    <option value="P">Việt Nam</option>
-                                    <option value="13+">Hàn Quốc</option>
-                                    <option value="16+">Nhật Bản</option>
-                                    <option value="18+">Mỹ</option>
-                                    <option value="18+">Trung Quốc</option>
-                                    <option value="18+">Thái Lan</option>
-                                    <option value="18+">Pháp</option>
-                                    <option value="18+">Ấn Độ</option>
-                                    <option value="18+">Anh</option>
-                                    <option value="18+">Đức</option>
+                                    <option value="Việt Nam">Việt Nam</option>
+                                    <option value="Hàn Quốc">Hàn Quốc</option>
+                                    <option value="Nhật Bản">Nhật Bản</option>
+                                    <option value="Mỹ">Mỹ</option>
+                                    <option value="Trung Quốc">Trung Quốc</option>
+                                    <option value="Thái Lan">Thái Lan</option>
+                                    <option value="Pháp">Pháp</option>
+                                    <option value="Ấn Độ">Ấn Độ</option>
+                                    <option value="Anh">Anh</option>
+                                    <option value="Đức">Đức</option>
                                 </select>
+
                             </div>
                         </div>
                         <div class="mb-3" style="position: relative;top: 10px">
