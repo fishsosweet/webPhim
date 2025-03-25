@@ -1,28 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Login;
+namespace App\Http\Controllers\User\Login;
 
 use App\Http\Controllers\Controller;
 use App\Http\Request\Admin\Login\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class LoginUserController extends Controller
 {
-    public function getLogin()
+    public function getLoginUser()
     {
-        return view("Amin.Login.login",[
-            'title' => 'Đăng nhập'
-        ]);
+        return view('User.Login.login');
     }
 
-    public function postLogin(LoginRequest  $request)
+    public function postLoginUser(LoginRequest $request)
     {
-        if(Auth::guard('admin')->attempt([
+        if(Auth::guard('web')->attempt([
             'email' => $request->email,
             'password' => $request->password])) {
-            $user = Auth::guard('admin')->user();
-            if($user->role=="admin"){
-                return redirect()->route('admin-home-get');
+            $user =Auth::guard('web')->user();
+            if($user->role=="user"){
+                return redirect()->route('homekhophim-get');
             }else{
                 return redirect()->back()->withErrors('Thông tin đăng nhập không chính xác')->withInput();
             }
@@ -30,5 +28,11 @@ class LoginController extends Controller
         else{
             return redirect()->back()->withErrors('Thông tin đăng nhập không chính xác')->withInput();
         }
+    }
+
+    public function getLogoutUser()
+    {
+        Auth::guard('web')->logout();
+        return redirect()->back();
     }
 }

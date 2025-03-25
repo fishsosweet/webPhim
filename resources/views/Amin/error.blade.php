@@ -1,5 +1,5 @@
 @if ($errors->any()) <!-- Báo lỗi validate -->
-<div class="alert alert-danger">
+<div class="alert alert-danger" style="color: red">
     @foreach ($errors->all() as $error)
         <div>{{ $error }}</div>
     @endforeach
@@ -14,7 +14,7 @@
 @endif
 
 @if (Session::has('error'))<!-- Báo thành của của with - session error -->
-<div class="alert alert-danger">
+<div class="alert alert-danger" style="color: red">
     {{ Session::get('error') }}
 </div>
 @endif

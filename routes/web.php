@@ -6,6 +6,9 @@ use \App\Http\Controllers\Admin\Categories\CategoriesController;
 use \App\Http\Controllers\Admin\Movie\MovieController;
 use \App\Http\Controllers\Admin\Slider\SliderController;
 use \App\Http\Controllers\User\HomeKhoPhimController;
+use \App\Http\Controllers\User\Categories\CategoriesUserController;
+use \App\Http\Controllers\User\Login\LoginUserController;
+use App\Http\Middleware\UserAuthMiddleware;
 use Illuminate\Support\Facades\Route;
 
 
@@ -13,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('login-admin',[LoginController::class,'getLogin'])->name('login');
 Route::post('login-admin',[LoginController::class,'postLogin'])->name('login-admin-post');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware([\App\Http\Middleware\AdminAuthMiddleware::class])->group(function () {
    Route::prefix('admin')->group(function () {
        Route::get('/',[HomeController::class,'getHomeAdmin'])->name('admin-home-get');
 
@@ -44,5 +47,13 @@ Route::middleware(['auth'])->group(function () {
    });
 });
  Route::get('khophim',[HomeKhoPhimController::class,'getHomeKhoPhim'])->name('homekhophim-get');
+ Route::get('khophim/login',[LoginUserController::class,'getLoginUser'])->name('login-khophim-get');
+Route::post('khophim/login',[LoginUserController::class,'postLoginUser'])->name('login-khophim-post');
+Route::get('logout',[LoginUserController::class,'getLogoutUser'])->name('logout-khophim-get');
+Route::middleware([UserAuthMiddleware::class])->group(function () {
+    Route::prefix('khophim')->group(function () {
+        Route::get('categories/{id}-{name}', [CategoriesUserController::class, 'getTheLoai'])->name('khophim-categories-get');
+    });
+});
 
 

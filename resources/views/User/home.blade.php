@@ -8,7 +8,7 @@
     <div class="TrangChu" style="position: relative;top: -15px">
         <div class="banner">
             <h1>Nhiều phim, nhiều hơn và nhiều hơn nữa</h1>
-            <p>Starts at 70,000 đ. Cancel anytime.</p>
+            <p>Đăng ký ngay tài khoản thành viên</p>
             <div class="email-box">
                 <input type="email" placeholder="Tìm tên phim">
                 <button>Tìm</button>
