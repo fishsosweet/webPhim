@@ -15,15 +15,15 @@
     <div class="header">
         <ul class="menu">
             <li><a href="{{route('homekhophim-get')}}" STYLE="font-size: 18px">TRANG CHỦ</a></li>
-            <li>PHIM MỚI</li>
-            <li>THỂ LOẠI
+            <li><a href="{{route('khophim-newmovies-get')}}" style="text-decoration: none">PHIM MỚI</a></li>
+            <li>THỂ LOẠI ▼
                 <ul class="submenu">
                     @foreach($categories as $cates)
                         <li><a href="{{route('khophim-categories-get', ['id' => $cates->id, 'name' => Str::slug($cates->name)])}}">{{$cates->name}}</a></li>
                     @endforeach
                 </ul>
             </li>
-            <li>QUỐC GIA
+            <li>QUỐC GIA ▼
                 <ul class="submenu">
                     <li><a href="{{route('khophim-country-get',['country' => 'Việt Nam'])}}" style="text-decoration: none">Việt Nam</a></li>
                     <li><a href="{{route('khophim-country-get',['country' => 'Hàn Quốc'])}}" style="text-decoration: none">Hàn Quốc</a></li>
@@ -39,10 +39,10 @@
             </li>
             <li>ĐỘ TUỔI
                 <ul class="submenu">
-                    <li>Mọi lứa tuổi</li>
-                    <li>13+</li>
-                    <li>16+</li>
-                    <li>18+</li>
+                    <li><a href="{{route('khophim-age-get',['age' => 'P'])}}" style="text-decoration: none">Mọi lứa tuổi</a></li>
+                    <li><a href="{{route('khophim-age-get',['age' => '13+'])}}" style="text-decoration: none">13+</a></li>
+                    <li><a href="{{route('khophim-age-get',['age' => '16+'])}}" style="text-decoration: none">16+</a></li>
+                    <li><a href="{{route('khophim-age-get',['age' => '18+'])}}" style="text-decoration: none">18+</a></li>
                 </ul>
             </li>
 

@@ -50,4 +50,16 @@ class HomeMovieServiceController extends Controller
     {
         return Categorie::select('id','thum','name')->where('active','1')->get();
     }
+
+
+    public function renderMovieView($movies)
+    {
+        $movies->load('category');
+
+        return view('User.Movies.movies', [
+            'Sliders' => $this->getSlides(),
+            'Categories' => $this->getCates(),
+            'Phim' => $movies
+        ]);
+    }
 }

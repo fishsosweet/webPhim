@@ -19,7 +19,6 @@
         style="font-size: 40px;text-align: center;position: relative;top:100px;left: -25px;z-index: 1000">THỂ LOẠI</h2>
     <div class="TrangChu2" style="position: relative; top: -20px;">
 
-
         <div class="movie-container" style="position: relative;left: 70px; font-family: 'Be Vietnam Pro', sans-serif;;">
             <div class="movie-group" id="group1">
                 <a  style="text-decoration: none" href="{{route('khophim-categories-get', ['id' => $Cates[0]['id'], 'name' => Str::slug($Cates[0]['name'])])}}">
@@ -85,7 +84,7 @@
                         mới ></a></h2>
                 <div class="movie-slider">
                     @foreach($phimMoi as $phim)
-                        <a href="#" style="text-decoration: none; color: black">
+                        <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}" style="text-decoration: none; color: black">
                             <div class="movie"
                                  style="width: 220px; height: 300px; background-color:#e38f51; padding: 0px;">
 
@@ -95,7 +94,7 @@
                                 </div>
                                 <div class="movie-info" style="position: relative;top:-20px">
                                     <h5 class="truncate-2-lines">{{$phim->title}}</h5>
-                                    <span style="position: relative;top: -20px;">{{$phim->release_year}} | {{$phim->duration}}p</span>
+                                    <span style="position: relative;top: -20px;color: black;">{{$phim->release_year}} | {{$phim->duration}}p</span>
                                 </div>
 
                             </div>
@@ -109,7 +108,7 @@
                         kinh dị ></a></h2>
                 <div class="movie-slider">
                     @foreach($phimKinhDi as $phim)
-                        <a href="#" style="text-decoration: none; color: black">
+                        <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}" style="text-decoration: none; color: black">
                             <div class="movie"
                                  style="width: 220px; height: 300px; background-color: #e38f51; padding: 0px;">
 
@@ -119,7 +118,7 @@
                                 </div>
                                 <div class="movie-info" style="position: relative;top:-20px">
                                     <h5 class="truncate-2-lines">{{$phim->title}}</h5>
-                                    <span style="position: relative;top: -20px;">{{$phim->release_year}} | {{$phim->duration}}p</span>
+                                    <span style="position: relative;top: -20px;color: black;">{{$phim->release_year}} | {{$phim->duration}}p</span>
                                 </div>
 
                             </div>
@@ -133,7 +132,7 @@
                         hoạt hình ></a></h2>
                 <div class="movie-slider">
                     @foreach($phimHoatHinh as $phim)
-                        <a href="#" style="text-decoration: none; color: black">
+                        <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}" style="text-decoration: none; color: black">
                             <div class="movie"
                                  style="width: 220px; height: 300px; background-color: #e38f51; padding: 0px;">
 
@@ -143,7 +142,7 @@
                                 </div>
                                 <div class="movie-info" style="position: relative;top:-20px">
                                     <h5 class="truncate-2-lines">{{$phim->title}}</h5>
-                                    <span style="position: relative;top: -20px;">{{$phim->release_year}} | {{$phim->duration}}p</span>
+                                    <span style="position: relative;top: -20px;color: black;">{{$phim->release_year}} | {{$phim->duration}}p</span>
                                 </div>
 
                             </div>
@@ -231,7 +230,7 @@
 
         <div class="movie-list" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
             @foreach($randomPhim as $phim)
-                <a href="#" style="text-decoration: none; color: black;margin-bottom: 10px">
+                <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}" style="text-decoration: none; color: black;margin-bottom: 10px">
                     <div class="movie"
                          style="width: 160px; height: 240px; background-color:#e38f51; padding: 0px; border-radius: 5px; position: relative; text-align: center;">
 
@@ -242,7 +241,7 @@
                         </div>
                         <div class="movie-info" style="position: relative;top:-20px">
                             <h5 class="truncate-2-lines" style="font-size: 12px">{{$phim->title}}</h5>
-                            <span style="position: relative;top: -20px;font-size: 10px">{{$phim->release_year}} | {{$phim->duration}}p</span>
+                            <span style="position: relative;top: -20px;font-size: 10px;color: black;">{{$phim->release_year}} | {{$phim->duration}}p</span>
                         </div>
                     </div>
                 </a>
