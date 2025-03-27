@@ -11,6 +11,10 @@ use Carbon\Carbon;
 class HomeMovieServiceController extends Controller
 {
 
+
+    public function view(){
+        return Movie::orderBy('views', 'desc')->limit(10)->get();
+    }
     public function randPhim()
     {
         return Movie::inRandomOrder()->where('active','1')->limit(12)->get();
@@ -55,8 +59,9 @@ class HomeMovieServiceController extends Controller
     public function renderMovieView($movies)
     {
         $movies->load('category');
-
+        $randMovies = $this->randPhim();
         return view('User.Movies.movies', [
+            'randMovies' => $randMovies,
             'Sliders' => $this->getSlides(),
             'Categories' => $this->getCates(),
             'Phim' => $movies

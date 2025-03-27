@@ -25,6 +25,7 @@ class HomeKhoPhimController extends Controller
         $phimKinhDi=$this->homeMovieService->getPhimKinhDi();
         $randPhim=$this->homeMovieService->randPhim();
         $phimHoatHinh=$this->homeMovieService->getHoatHinh();
+        $phimViewCao=$this->homeMovieService->view();
         return view('User.home',[
             'Categories'=>Categorie::all(),
             'Sliders' => $sliders,
@@ -33,7 +34,7 @@ class HomeKhoPhimController extends Controller
             'phimKinhDi' => $phimKinhDi,
             'phimHoatHinh' => $phimHoatHinh,
             'randomPhim' => $randPhim,
+            'view'=>$phimViewCao,
         ]);
-
     }
 }

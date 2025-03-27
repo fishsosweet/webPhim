@@ -10,6 +10,7 @@ class MoviesUserController extends Controller
 {
     protected $moviesService;
 
+
     public function __construct(HomeMovieServiceController $homeMovieServiceController)
     {
         $this->moviesService = $homeMovieServiceController;
@@ -17,6 +18,7 @@ class MoviesUserController extends Controller
     public function getPhim($id)
     {
         $movie=Movie::find($id);
+        $movie->increment('views');
         return $this->moviesService->renderMovieView($movie);
     }
 }

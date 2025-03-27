@@ -22,7 +22,6 @@ class CategoriesUserController extends Controller
     {
         return $this->categoryService->renderCategoryView('Phim mới', Movie::where('created_at', '>=', Carbon::now()->subDays(7))
             ->where('active', '1')
-            ->limit(20)
             ->get());
     }
 
@@ -48,6 +47,7 @@ class CategoriesUserController extends Controller
             Movie::where('age_restrict', $age)->get()
         );
     }
+
 
 
 

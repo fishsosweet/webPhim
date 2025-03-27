@@ -7,7 +7,8 @@
 @section('content')
 
     <div class="container">
-        <div class="flex-div" style="border-radius:10px;padding:0px 0px 10px;display: flex; align-items: flex-start;background-color: #495057">
+        <div class="flex-div"
+             style="border-radius:10px;padding:0px 0px 10px;display: flex; align-items: flex-start;background-color: #454545">
             <div class="left" style="width: 70%;">
                 <div class="mt-3 d-flex justify-content-center">
                     <iframe id="previewTrailer" class="rounded"
@@ -19,90 +20,22 @@
             <div class="left" style="width: 30%;">
                 <div class="suggested-movies">
                     <div class="btn-group">
-                        <span class="btn btn-warning" style="cursor: default;">Gợi ý cho bạn</span>
+                        <span class="btn btn-warning"
+                              style="cursor: default;background-color: #ff7b00">Gợi ý cho bạn</span>
                     </div>
 
                     <div class="movie-list">
-                        <!-- 10 Phim -->
-                        <div class="movie-item">
-                            <img src="link_anh_1.jpg" alt="Người Chơi Cờ">
-                            <div class="movie-info">
-                                <p class="movie-title">Người Chơi Cờ</p>
-                                <p class="movie-views">0 lượt xem</p>
-                            </div>
-                        </div>
-
-                        <div class="movie-item">
-                            <img src="link_anh_2.jpg" alt="Ta Có Thể Giác Ngộ Vô Hạn">
-                            <div class="movie-info">
-                                <p class="movie-title">Ta Có Thể Giác Ngộ Vô Hạn</p>
-                                <p class="movie-views">3 lượt xem</p>
-                            </div>
-                        </div>
-
-                        <div class="movie-item">
-                            <img src="link_anh_3.jpg" alt="Nautilus">
-                            <div class="movie-info">
-                                <p class="movie-title">Nautilus: Hai Vạn Dặm Dưới Đáy Biển</p>
-                                <p class="movie-views">21 lượt xem <span class="rating">⭐ 2.5</span></p>
-                            </div>
-                        </div>
-
-                        <div class="movie-item">
-                            <img src="link_anh_4.jpg" alt="Người Hùng Yếu Đuối">
-                            <div class="movie-info">
-                                <p class="movie-title">Người Hùng Yếu Đuối</p>
-                                <p class="movie-views">69 lượt xem</p>
-                            </div>
-                        </div>
-
-                        <div class="movie-item">
-                            <img src="link_anh_5.jpg" alt="Bà Mẹ Lừa Đảo">
-                            <div class="movie-info">
-                                <p class="movie-title">Bà Mẹ Lừa Đảo</p>
-                                <p class="movie-views">25 lượt xem</p>
-                            </div>
-                        </div>
-
-                        <div class="movie-item">
-                            <img src="link_anh_6.jpg" alt="Cầu Thang">
-                            <div class="movie-info">
-                                <p class="movie-title">Cầu Thang</p>
-                                <p class="movie-views">4 lượt xem</p>
-                            </div>
-                        </div>
-
-                        <div class="movie-item">
-                            <img src="link_anh_7.jpg" alt="Phim 7">
-                            <div class="movie-info">
-                                <p class="movie-title">Phim 7</p>
-                                <p class="movie-views">10 lượt xem</p>
-                            </div>
-                        </div>
-
-                        <div class="movie-item">
-                            <img src="link_anh_8.jpg" alt="Phim 8">
-                            <div class="movie-info">
-                                <p class="movie-title">Phim 8</p>
-                                <p class="movie-views">15 lượt xem</p>
-                            </div>
-                        </div>
-
-                        <div class="movie-item">
-                            <img src="link_anh_9.jpg" alt="Phim 9">
-                            <div class="movie-info">
-                                <p class="movie-title">Phim 9</p>
-                                <p class="movie-views">7 lượt xem</p>
-                            </div>
-                        </div>
-
-                        <div class="movie-item">
-                            <img src="link_anh_10.jpg" alt="Phim 10">
-                            <div class="movie-info">
-                                <p class="movie-title">Phim 10</p>
-                                <p class="movie-views">20 lượt xem</p>
-                            </div>
-                        </div>
+                        @foreach($randMovies as $phim)
+                            <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"style="text-decoration: none">
+                                <div class="movie-item">
+                                    <img src="{{asset($phim->poster_url)}}" alt="{{asset($phim->poster_url)}}">
+                                    <div class="movie-info">
+                                        <p class="movie-title">{{$phim->title}}</p>
+                                        <p class="movie-views">0 lượt xem</p>
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -114,6 +47,12 @@
             @foreach($Phim->category as $category)
                 <span style="background-color:#ff7b00 ">{{ $category->name }}</span>
             @endforeach
+            <p id="moTa" style="color: gainsboro; max-height: 60px; overflow: hidden; transition: max-height 0.3s;">
+                Nội dung: {{ $Phim->description }}</p>
+            <button id="xemThem" style="background: none; border: none; color: white; cursor: pointer; display: none;">
+                Xem thêm ▼
+            </button>
+
 
         </div>
 
@@ -153,6 +92,27 @@
         if (embedUrl) {
             document.getElementById("previewTrailer").src = embedUrl;
         }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let moTa = document.getElementById("moTa");
+            let xemThem = document.getElementById("xemThem");
+
+            // Kiểm tra nếu nội dung dài hơn giới hạn thì hiện nút "Xem thêm"
+            if (moTa.scrollHeight > 60) {
+                xemThem.style.display = "inline"; // Hiện nút
+            }
+
+            xemThem.addEventListener("click", function () {
+                if (moTa.style.maxHeight === "60px") {
+                    moTa.style.maxHeight = "none"; // Hiện toàn bộ nội dung
+                    this.innerText = "Thu gọn ▲";
+                } else {
+                    moTa.style.maxHeight = "60px"; // Giới hạn lại
+                    this.innerText = "Xem thêm ▼";
+                }
+            });
+        });
     </script>
 @endsection
 @section('footer')

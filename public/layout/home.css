@@ -89,23 +89,63 @@
 .ranking-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2px;
 }
 
 /* Mục trong xếp hạng */
 .ranking-item {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: stretch; /* Đảm bảo các phần tử trong hàng có chiều cao bằng nhau */
+    justify-content: flex-start;
     background-color: #333;
     padding: 10px;
+    gap: 120px;
+    margin: 0;
+    width: 470px;
     border-radius: 5px;
 }
 
-/* Số thứ tự */
-.ranking-item span {
+.ranking-item:hover{
+    background-color:#ff7b00 ;
+}
+
+.ranking-item .movie-info-home {
+    flex: 1; /* Đảm bảo phần chữ dãn đều */
+    min-width: 150px; /* Độ rộng tối thiểu */
+    margin: 0;
+    font-size: 11px;
+    position: relative;
+    right: 128px;
+}
+
+.ranking-item .movie-title-home {
+    position: relative;
+    right: 80px;
+    font-size: 16px;
     font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
     color: white;
+}
+.ranking-item img {
+    position: relative;
+    right: 40px;
+    width: 70px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0; /* Không để hình bị co lại */
+}
+
+.ranking-item span {
+    min-width: 30px;
+    text-align: center;
+    display: flex;
+    margin-left: 30px;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -761,6 +801,14 @@ footer a:hover {
     color: black;
 }
 
+.movie-list-home {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép xuống dòng khi hết chỗ */
+    gap: 10px; /* Tạo khoảng cách giữa các phim */
+    justify-content: center; /* Canh giữa nếu chưa đủ hàng */
+    align-items: flex-start; /* Căn đầu dòng */
+    max-width: 100%; /* Đảm bảo không bị tràn */
+}
 .movie-list {
     display: flex;
     flex-direction: column;
@@ -774,33 +822,50 @@ footer a:hover {
 
 .movie-item {
     display: flex;
+    justify-content: flex-start;
+    width: 300px;
+    height: auto;
     align-items: center;
+    gap: 5px;
     background-color: #1c1c1c;
     border-radius: 6px;
-    padding: 5px;
+    text-align: left;
+    padding: 0;
 }
 
 .movie-item img {
-    width: 80px;
+    display: block;
+    margin-left: 0;
+    width: 60px;
     height: 60px;
     border-radius: 4px;
 }
 
+.movie-title:hover{
+    color: #ffb400;
+}
+
 .movie-info {
-    margin-left: 10px;
+    margin-left: 0;
+    padding-left: 0;
     color: white;
 }
 
 .movie-title {
+    text-align: left;
     font-size: 14px;
     font-weight: bold;
-    margin: 0;
+    margin-left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
 }
 
 .movie-views {
     font-size: 12px;
     color: gray;
-    margin: 0;
+    margin-left: 0;
 }
 
 .rating {
