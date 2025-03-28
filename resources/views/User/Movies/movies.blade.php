@@ -32,7 +32,7 @@
                                     <img src="{{asset($phim->poster_url)}}" alt="{{asset($phim->poster_url)}}">
                                     <div class="movie-info">
                                         <p class="movie-title">{{$phim->title}}</p>
-                                        <p class="movie-views">0 lượt xem</p>
+                                        <p class="movie-views">{{$phim->views}} lượt xem</p>
                                     </div>
                                 </div>
                             </a>
@@ -84,7 +84,7 @@
                         <div class="movie"
                              style="width: 160px; height: 240px; background-color:#e38f51; padding: 0px; border-radius: 5px; position: relative; text-align: center;">
 
-                            <img src="{{$phim->poster_url}}"
+                            <img src="{{asset($phim->poster_url)}}"
                                  style="width: 100%; height: 80%; border-radius: 5px 5px 0 0;">
 
                             <div class="play-button" style="width: 40px;height: 40px;font-size: 15px;">

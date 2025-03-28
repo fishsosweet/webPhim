@@ -63,7 +63,7 @@ Route::middleware([UserAuthMiddleware::class])->group(function () {
 
         //Phim
         Route::get('watch/{id}-{name}',[MoviesUserController::class,'getPhim'])->name('khophim-watch-get');
-
+        Route::get('/movies/filter', [CategoriesUserController::class, 'filter'])->name('movies.filter');
     });
 });
 

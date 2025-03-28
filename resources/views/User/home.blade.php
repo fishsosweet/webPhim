@@ -171,8 +171,8 @@
                             <span>{{++$i}}</span>
                             <img src="{{asset($phim->poster_url)}}" style="width: 80px;height: 90px">
                             <div>
-                                <h4 class="movie-title-home">{{$phim->title}}</h4>
-                                <span class="movie-info-home">{{$phim->release_year}} | {{$phim->duration}}p</span>
+                                <h4 class="movie-title-home" style="position: relative;top: -20px;left: -110px">{{$phim->title}}</h4>
+                                <span class="movie-info-home" style="position: relative;top: -10px">{{$phim->release_year}} | {{$phim->duration}}p - {{$phim->views}} lượt xem</span>
                             </div>
                         </div>
                     </a>
