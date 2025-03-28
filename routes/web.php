@@ -11,8 +11,8 @@ use \App\Http\Controllers\User\Login\LoginUserController;
 use \App\Http\Controllers\User\Movies\MoviesUserController;
 use App\Http\Middleware\UserAuthMiddleware;
 use Illuminate\Support\Facades\Route;
-
-
+use App\Livewire\MovieFilter;
+use Livewire\Livewire;
 
 Route::get('login-admin',[LoginController::class,'getLogin'])->name('login');
 Route::post('login-admin',[LoginController::class,'postLogin'])->name('login-admin-post');
@@ -57,11 +57,13 @@ Route::middleware([UserAuthMiddleware::class])->group(function () {
         //TheLoai
         Route::get('categories/{id}-{name}', [CategoriesUserController::class, 'getTheLoai'])->name('khophim-categories-get');
         Route::get('country/{country}',[CategoriesUserController::class, 'getQuocGia'])->name('khophim-country-get');
-        Route::get('phim-moi',[CategoriesUserController::class, 'getPhimMoi'])->name('khophim-newmovies-get');
+        Route::get('newmovie',[CategoriesUserController::class, 'getPhimMoi'])->name('khophim-newmovies-get');
         Route::get('age/{age}',[CategoriesUserController::class, 'getTuoi'])->name('khophim-age-get');
+        Route::get('/movies/sort', [CategoriesUserController::class, 'sort'])->name('movies.sort');
 
         //Phim
         Route::get('watch/{id}-{name}',[MoviesUserController::class,'getPhim'])->name('khophim-watch-get');
+
     });
 });
 

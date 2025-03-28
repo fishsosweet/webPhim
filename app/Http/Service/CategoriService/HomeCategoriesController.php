@@ -14,8 +14,6 @@ class HomeCategoriesController extends Controller
     public function renderCategoryView($title, $movies)
     {
         return view('User.Categories.cates', compact('title') + [
-                'Sliders' => $this->homeMovieService->getSlides(),
-                'Categories' => $this->homeMovieService->getCates(),
                 'Phim' => $movies
             ]);
     }

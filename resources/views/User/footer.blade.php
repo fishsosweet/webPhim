@@ -69,7 +69,7 @@
 
 <script>
     let backgrounds = [
-        @foreach($sliderFooter as $slider)
+        @foreach($Sliders as $slider)
             "url('{{ $slider->thum }}')",
         @endforeach
     ];

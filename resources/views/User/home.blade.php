@@ -1,9 +1,4 @@
 @extends('User.main')
-@section('header')
-    @php
-        $categories=$Categories
-    @endphp
-@endsection
 @section('content')
     <div class="TrangChu" style="position: relative;top: -15px">
         <div class="banner">

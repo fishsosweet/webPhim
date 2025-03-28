@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Movies;
 use App\Http\Controllers\Controller;
 use App\Http\Service\MovieService\HomeMovieServiceController;
 use App\Models\Movie;
+use Illuminate\Http\Request;
 
 class MoviesUserController extends Controller
 {

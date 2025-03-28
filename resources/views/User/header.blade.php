@@ -18,7 +18,7 @@
             <li><a href="{{route('khophim-newmovies-get')}}" style="text-decoration: none">PHIM MỚI</a></li>
             <li>THỂ LOẠI ▼
                 <ul class="submenu">
-                    @foreach($categories as $cates)
+                    @foreach($Categories as $cates)
                         <li><a href="{{route('khophim-categories-get', ['id' => $cates->id, 'name' => Str::slug($cates->name)])}}">{{$cates->name}}</a></li>
                     @endforeach
                 </ul>

@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
+use App\Http\Service\MovieService\HomeMovieServiceController;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -20,5 +22,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrap();
+        $homeMovieService = app(HomeMovieServiceController::class);
+
+        View::share([
+            'Sliders' => $homeMovieService->getSlides(),
+            'Categories' => $homeMovieService->getCates(),
+        ]);
     }
 }

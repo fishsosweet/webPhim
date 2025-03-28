@@ -59,12 +59,14 @@ class HomeMovieServiceController extends Controller
     public function renderMovieView($movies)
     {
         $movies->load('category');
+        $relatedMovies = Movie::whereHas('category', function ($query) use ($movies) {
+            $query->whereIn('category_id', $movies->category->pluck('id'));
+        })->where('id', '!=', $movies)->limit(6)->get();
         $randMovies = $this->randPhim();
         return view('User.Movies.movies', [
             'randMovies' => $randMovies,
-            'Sliders' => $this->getSlides(),
-            'Categories' => $this->getCates(),
-            'Phim' => $movies
+            'Phim' => $movies,
+            'belongTo'=>$relatedMovies
         ]);
     }
 }
