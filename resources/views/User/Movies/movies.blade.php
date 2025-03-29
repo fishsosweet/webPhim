@@ -24,7 +24,7 @@
                               style="cursor: default;background-color: #ff7b00">Gợi ý cho bạn</span>
                     </div>
 
-                    <div class="movie-list">
+                    <div class="movie-list-screen">
                         @foreach($randMovies as $phim)
                             <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
                                style="text-decoration: none">
@@ -58,18 +58,21 @@
         </div>
 
         <div class="comment-section">
-            <h3 style="color:white ">Bình luận</h3>
-            <textarea class="comment-box" placeholder="Viết bình luận..."></textarea>
-
-            <input type="submit" value="Gửi" class="btn-submit">
-
-            <div class="comment">
-                <strong>Nguyễn Văn A:</strong>
-                <p>Phim hay quá, mong ad up thêm nhiều phim kiểu này!</p>
-            </div>
-            <div class="comment">
-                <strong>Trần Thị B:</strong>
-                <p>Hóng phần tiếp theo nè!</p>
+            <form id="comment-form" method="POST">
+                @csrf
+                <h3 style="color:white ">Bình luận</h3>
+                <input type="hidden" name="movie_id" value="{{ $Phim->id }}" id="movie_id">
+                <textarea class="comment-box" placeholder="Viết bình luận..." name="content"
+                          id="comment-content"></textarea>
+                <input type="submit" value="Gửi" class="btn-submit" name="guicmt">
+            </form>
+            <div id="container-list-cmt">
+                @foreach($cmts as $cmt)
+                    <div class="comment">
+                        <strong style="color: white">{{$cmt->user->name}}</strong>
+                        <p style="color: white">{{$cmt->content}}</p>
+                    </div>
+                @endforeach
             </div>
         </div>
         <div class="last-main-container" style="margin-bottom: 0">
@@ -100,7 +103,84 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let movieId = $('#movie_id').val();
+            let interval = null;
+            // Gửi bình luận
+            $('#comment-form').on('submit', function (e) {
+                e.preventDefault();
 
+                let content = $('#comment-content').val().trim();
+                if (content === "") {
+                    alert("Vui lòng nhập bình luận!");
+                    return;
+                }
+
+                $.ajax({
+                    url: "{{ route('comments.store') }}",
+                    method: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        movie_id: movieId,
+                        content: content
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            $('#comment-content').val('');
+
+                            // Thêm bình luận ngay lập tức mà không cần tải lại
+                            let newComment = `
+                        <div class="comment">
+                            <strong style="color: white">${response.comment.user.name}</strong>
+                            <p style="color: white">${response.comment.content}</p>
+                        </div>`;
+
+                            $('#container-list-cmt').prepend(newComment);
+
+                            if (!interval) {
+                                interval = setInterval(loadComments,1000);
+                            }
+                        }
+                    },
+
+                    error: function (xhr) {
+                        console.error("Lỗi khi gửi bình luận:", xhr.responseText);
+                    }
+                });
+            });
+
+            // Lấy danh sách bình luận mới nhất
+            function loadComments() {
+                $.ajax({
+                    url: "{{ route('comments.latest', ['id' => $Phim->id, 'name' => Str::slug($Phim->title)]) }}",
+                    method: "GET",
+                    success: function (response) {
+                        let commentsHtml = "";
+                        let hasNewComment = false;
+                        response.comments.forEach(comment => {
+                            commentsHtml += `
+                        <div class="comment">
+                            <strong style="color: white">${comment.user.name}</strong>
+                            <p style="color: white">${comment.content}</p>
+                        </div>`;
+                        });
+                        if ($('#container-list-cmt').children().length !== response.comments.length) {
+                            hasNewComment = true;
+                        }
+
+                        $('#container-list-cmt').html(commentsHtml);
+                        if (!hasNewComment) {
+                            clearInterval(interval);
+                            interval = null;
+                        }
+                    }
+                });
+            }
+
+        });
+    </script>
     <script>
         function convertToEmbed(url) {
             let videoId = '';

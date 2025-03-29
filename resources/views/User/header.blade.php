@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <title>KhoPhim</title>
     <link rel="stylesheet" href="{{ asset('layout/home.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{ asset('js/script.js') }}"></script>
 </head>
 <body>

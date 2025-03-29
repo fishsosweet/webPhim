@@ -60,10 +60,11 @@ Route::middleware([UserAuthMiddleware::class])->group(function () {
         Route::get('newmovie',[CategoriesUserController::class, 'getPhimMoi'])->name('khophim-newmovies-get');
         Route::get('age/{age}',[CategoriesUserController::class, 'getTuoi'])->name('khophim-age-get');
         Route::get('/movies/sort', [CategoriesUserController::class, 'sort'])->name('movies.sort');
-
+        Route::get('/movies/filter', [CategoriesUserController::class, 'filter'])->name('movies.filter');
         //Phim
         Route::get('watch/{id}-{name}',[MoviesUserController::class,'getPhim'])->name('khophim-watch-get');
-        Route::get('/movies/filter', [CategoriesUserController::class, 'filter'])->name('movies.filter');
+        Route::post('/comments/store', [MoviesUserController::class, 'store'])->name('comments.store');
+        Route::get('/comments/latest/{id}-{name}', [MoviesUserController::class, 'latest'])->name('comments.latest');
     });
 });
 

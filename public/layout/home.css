@@ -740,7 +740,7 @@ footer a:hover {
     margin-top: 30px;
 }
 .comment-box {
-    width: 100%;
+    width: 98%;
     padding: 10px;
     margin-top: 10px;
     border: 1px solid #444;
@@ -809,7 +809,7 @@ footer a:hover {
     align-items: flex-start; /* Căn đầu dòng */
     max-width: 100%; /* Đảm bảo không bị tràn */
 }
-.movie-list {
+.movie-list-screen{
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -819,7 +819,16 @@ footer a:hover {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none
 }
-
+.movie-list {
+    display: flex;
+    flex-wrap: wrap; /* ✅ Cho phép xuống hàng */
+    gap: 10px;
+    height: auto;
+    overflow-y: auto; /* ✅ Nếu muốn có thanh cuộn */
+    padding-right: 5px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+}
 .movie-item {
     display: flex;
     justify-content: flex-start;

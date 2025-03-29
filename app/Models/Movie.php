@@ -27,5 +27,8 @@ class Movie extends Model
     {
         return $this->belongsToMany(Categorie::class,'movie_category','movie_id', 'category_id');
     }
-
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'movie_id','id');
+    }
 }

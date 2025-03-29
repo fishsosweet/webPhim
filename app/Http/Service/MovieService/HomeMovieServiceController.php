@@ -56,7 +56,7 @@ class HomeMovieServiceController extends Controller
     }
 
 
-    public function renderMovieView($movies)
+    public function renderMovieView($movies,$cmts)
     {
         $movies->load('category');
         $relatedMovies = Movie::whereHas('category', function ($query) use ($movies) {
@@ -66,7 +66,8 @@ class HomeMovieServiceController extends Controller
         return view('User.Movies.movies', [
             'randMovies' => $randMovies,
             'Phim' => $movies,
-            'belongTo'=>$relatedMovies
+            'belongTo'=>$relatedMovies,
+            'cmts' => $cmts
         ]);
     }
 }

@@ -13,6 +13,7 @@ class HomeCategoriesController extends Controller
     }
     public function renderCategoryView($title, $movies)
     {
+
         return view('User.Categories.cates', compact('title') + [
                 'Phim' => $movies
             ]);
