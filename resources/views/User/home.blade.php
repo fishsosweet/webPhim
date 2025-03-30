@@ -206,10 +206,23 @@
             @endforeach
         </div>
     </div>
+    <script>
+        document.getElementById("nextBtn").addEventListener("click", function() {
+            let group1 = document.getElementById("group1");
+            let group2 = document.getElementById("group2");
 
+            group1.style.display = "none";
+            group2.style.display = "flex";
+        });
+
+        document.getElementById("prevBtn").addEventListener("click", function() {
+            let group1 = document.getElementById("group1");
+            let group2 = document.getElementById("group2");
+
+            group1.style.display = "flex";
+            group2.style.display = "none";
+        });
+
+    </script>
 @endsection
-@section('footer')
-    @php
-        $sliderFooter=$Sliders
-    @endphp
-@endsection
+

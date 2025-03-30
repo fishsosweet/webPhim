@@ -13,6 +13,7 @@ class Comment extends Model
         'user_id',
         'movie_id',
         'content',
+
     ];
 
     public $timestamps = false;

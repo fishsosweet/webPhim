@@ -32,20 +32,21 @@ class MoviesUserController extends Controller
         return response()->json(['success' => true, 'comment' => $comment->load('user')]);
     }
 
-    // ✅ Lấy bình luận mới nhất
-    public function latest($movie_id)
+    // Lấy bình luận mới nhất
+    public function latest($movie_id,Request $request)
     {
+        $latestCommentId = $request->input('latest_id', 0);
         $comments = Comment::where('movie_id', $movie_id)
+            ->where('id', '>', $latestCommentId)
             ->latest()
             ->with('user') // Load thông tin user
             ->get();
-
         return response()->json(['comments' => $comments]);
     }
     public function getPhim($id)
     {
         $movie=Movie::find($id);
-        $cmt=$movie->comments()->with('user')->get();
+        $cmt=$movie->comments()->with('user')->latest()->get();
         $movie->increment('views');
         return $this->moviesService->renderMovieView($movie,$cmt);
     }

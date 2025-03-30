@@ -69,10 +69,13 @@
             <div id="container-list-cmt">
                 @foreach($cmts as $cmt)
                     <div class="comment">
-                        <strong style="color: white">{{$cmt->user->name}}</strong>
+                        <strong style="color: white;font-size: 18px">{{$cmt->user->name}}</strong>
                         <p style="color: white">{{$cmt->content}}</p>
+                        <p style="color: white;font-size: 10px";>{{ \Carbon\Carbon::parse($cmt->created_at)->format('d/m/Y') }}
+                        </p>
                     </div>
                 @endforeach
+
             </div>
         </div>
         <div class="last-main-container" style="margin-bottom: 0">
@@ -103,11 +106,9 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
             let movieId = $('#movie_id').val();
-            let interval = null;
             // Gửi bình luận
             $('#comment-form').on('submit', function (e) {
                 e.preventDefault();
@@ -133,15 +134,11 @@
                             // Thêm bình luận ngay lập tức mà không cần tải lại
                             let newComment = `
                         <div class="comment">
-                            <strong style="color: white">${response.comment.user.name}</strong>
+                            <strong style="color: white;font-size: 18px">${response.comment.user.name}</strong>
                             <p style="color: white">${response.comment.content}</p>
                         </div>`;
 
                             $('#container-list-cmt').prepend(newComment);
-
-                            if (!interval) {
-                                interval = setInterval(loadComments,1000);
-                            }
                         }
                     },
 
@@ -150,7 +147,7 @@
                     }
                 });
             });
-
+            let latestCommentId = 0;
             // Lấy danh sách bình luận mới nhất
             function loadComments() {
                 $.ajax({
@@ -158,27 +155,27 @@
                     method: "GET",
                     success: function (response) {
                         let commentsHtml = "";
-                        let hasNewComment = false;
                         response.comments.forEach(comment => {
                             commentsHtml += `
                         <div class="comment">
-                            <strong style="color: white">${comment.user.name}</strong>
-                            <p style="color: white">${comment.content}</p>
+                            <strong style="color: white;font-size: 18px">${comment.user.name}</strong>
+                            <p style="color: white";>${comment.content}</p>
+                            <p style="color: white;font-size: 10px";>${comment.created_at}</p>
                         </div>`;
+                            latestCommentId = comment.id;
                         });
-                        if ($('#container-list-cmt').children().length !== response.comments.length) {
-                            hasNewComment = true;
-                        }
 
                         $('#container-list-cmt').html(commentsHtml);
-                        if (!hasNewComment) {
-                            clearInterval(interval);
-                            interval = null;
-                        }
+                    },
+
+                    error: function (xhr) {
+                        console.error("Lỗi khi tải bình luận:", xhr.responseText);
                     }
                 });
             }
 
+            // Gọi AJAX mỗi giây để cập nhật bình luận mới
+            setInterval(loadComments, 1000);
         });
     </script>
     <script>

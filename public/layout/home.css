@@ -880,3 +880,12 @@ footer a:hover {
 .rating {
     color: #ffb400;
 }
+#container-list-cmt {
+    margin-top: 20px;
+    max-height: 400px; /* Giới hạn chiều cao */
+    overflow-y: auto; /* Hiển thị thanh cuộn dọc nếu nội dung vượt quá */
+    padding: 10px;
+    border: 1px solid #ccc; /* Viền để dễ nhìn */
+    border-radius: 5px; /* Bo góc */
+    background-color: rgba(0, 0, 0, 0.8); /* Màu nền tối */
+}
