@@ -5,15 +5,25 @@ namespace App\Http\Controllers\User\Login;
 use App\Http\Controllers\Controller;
 use App\Http\Request\Admin\Login\LoginRequest;
 use App\Http\Request\User\Register\RegisterRequest;
+use App\Mail\SendOtpMail;
 use App\Models\User;
+use Carbon\Carbon;
 use http\Env\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Mail;
 use MongoDB\Driver\Session;
 
 class LoginUserController extends Controller
 {
     public function getLoginUser()
     {
+        $users = User::whereNull('status')
+            ->where('otp_expires', '<', now())
+            ->get();
+        foreach ($users as $user) {
+            $user->delete();
+        }
         return view('User.Login.login');
     }
 
@@ -34,18 +44,28 @@ class LoginUserController extends Controller
         }
     }
 
+
     public function postDangKyUser(RegisterRequest $request)
     {
         try {
+            $otp = rand(100000, 999999);
             User::create([
                 'name' => $request->name,
-                'email' => $request->email,
-                'password' => bcrypt($request->password),
+                'email' => $request->emailregi,
+                'password' => bcrypt($request->passwordregi),
+                'otp' => $otp,
+                'otp_expires' => Carbon::now()->addMinutes(1),
             ]);
-            session()->flash('success','Đăng ký tài khoản thành công');
-            return redirect()->back();
+            session(['email' => $request->emailregi]);
+            $mail=$request->emailregi;
+            $name=$request->name;
+            Mail::send('User.Login.otp',['otp'=>$otp],function ($email) use ($mail,$name) {
+                $email->subject('Xác nhận thành công đơn hàng!');
+                $email->to($mail,$name);
+            });
+            return redirect()->route('otp-get');
         }catch (\Exception $exception){
-            session()->flash('error','Email đã đăng kí tài khoản');
+            session()->flash('error','Email đã đăng kí tài khoản'.$exception->getMessage());
             return redirect()->back();
         }
 

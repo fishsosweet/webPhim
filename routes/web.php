@@ -8,6 +8,7 @@ use \App\Http\Controllers\Admin\Slider\SliderController;
 use \App\Http\Controllers\User\HomeKhoPhimController;
 use \App\Http\Controllers\User\Categories\CategoriesUserController;
 use \App\Http\Controllers\User\Login\LoginUserController;
+use \App\Http\Controllers\User\Login\OTP;
 use \App\Http\Controllers\User\Movies\MoviesUserController;
 use App\Http\Middleware\UserAuthMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,9 @@ Route::middleware([\App\Http\Middleware\AdminAuthMiddleware::class])->group(func
 Route::post('khophim/login',[LoginUserController::class,'postLoginUser'])->name('login-khophim-post');
 Route::post('khophim/register',[LoginUserController::class,'postDangKyUser'])->name('register-khophim-post');
 Route::get('logout',[LoginUserController::class,'getLogoutUser'])->name('logout-khophim-get');
+Route::get('otp',[OTP::class,'getOTP'])->name('otp-get');
+Route::post('otp',[OTP::class,'postOTP'])->name('otp-post');
+Route::post('otp-again',[OTP::class,'postOTPagain'])->name('otpagain-post');
 Route::middleware([UserAuthMiddleware::class])->group(function () {
     Route::prefix('khophim')->group(function () {
         //TheLoai

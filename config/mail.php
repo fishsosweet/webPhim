@@ -39,20 +39,21 @@ return [
 
         'smtp' => [
             'transport' => 'smtp',
-            'scheme' => env('MAIL_SCHEME'),
-            'url' => env('MAIL_URL'),
-            'host' => env('MAIL_HOST', '127.0.0.1'),
-            'port' => env('MAIL_PORT', 2525),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'host' => 'smtp.gmail.com',
+            'port' =>587,
+            'encryption' =>'tls',
+            'username' =>'macarada77@gmail.com',
+            'password' =>'fklvktydasyiiaur',
             'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+            'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],
 
         'ses' => [
             'transport' => 'ses',
         ],
-
+        'mailgun' => [
+            'transport' => 'mailgun',
+        ],
         'postmark' => [
             'transport' => 'postmark',
             // 'message_stream_id' => env('POSTMARK_MESSAGE_STREAM_ID'),
@@ -109,8 +110,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => 'macarada77@gmail.com',
+        'name' => 'KhoPhim - OTP',
     ],
 
 ];

@@ -140,10 +140,10 @@
         <form id="register-form" class="form hidden" action="{{route('register-khophim-post')}}" method="POST">
             @csrf
             <h2>Đăng ký</h2>
-            <input type="text" placeholder="Tên đầy đủ"  name="name" required>
-            <input type="email" placeholder="Email"  name="email"  required>
-            <input type="password" placeholder="password" name="password"required>
-            <input type="password" placeholder="Xác nhận mật khẩu" name="rePassword" required>
+            <input type="text" placeholder="Tên đầy đủ"  name="name" >
+            <input type="email" placeholder="Email"  name="emailregi"  >
+            <input type="password" placeholder="password" name="passwordregi">
+            <input type="password" placeholder="Xác nhận mật khẩu" name="rePassword" >
             <button type="submit" class="btn" >Đăng ký</button>
             <p>Bạn đã có tài khoản? <a href="#" id="show-login">Đăng nhập</a></p>
         </form>
