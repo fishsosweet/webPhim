@@ -889,3 +889,102 @@ footer a:hover {
     border-radius: 5px; /* Bo góc */
     background-color: rgba(0, 0, 0, 0.8); /* Màu nền tối */
 }
+.card-custom {
+    background: rgba(255, 123, 0, 0.1);
+    border: 1px solid rgba(255, 123, 0, 0.5);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.btn-custom {
+    background-color: #ff7b00;
+    border: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 50px;
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: #cc6300;
+}
+
+.check-icon {
+    color: #ff7b00;
+    font-weight: bold;
+}
+
+li {
+    color: white;
+    list-style: none;
+}
+
+.text-muted {
+    color: white;
+}
+.content-vip{
+        background: linear-gradient(to bottom, #502400, #000);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: auto;
+        height: auto;
+
+}
+.container-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1000px; /* Đảm bảo có đủ chỗ */
+    margin: auto;
+}
+
+/* Mỗi card chiếm 48% chiều rộng để hiển thị 2 cột */
+.card {
+    width: 48%;
+    background: rgba(255, 123, 0, 0.1);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước */
+}
+
+.card h4 {
+    font-size: 24px;
+}
+
+.check-icon {
+    color: #0f0;
+    margin-right: 5px;
+}
+
+.btn-custom {
+    background-color: #ff9800;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn-custom:hover {
+    background-color: #e68900;
+}
+
+/* Khi màn hình nhỏ hơn 768px, mỗi hàng chỉ có 1 card */
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+}

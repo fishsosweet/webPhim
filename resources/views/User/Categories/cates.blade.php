@@ -38,7 +38,7 @@
                 </select>
             </li>
         </ul>
-        <h2 style="color: #ff7b00; font-size: 30px; font-weight: bold; margin-bottom: 10px;">Phim mới</h2>
+        <h2 style="color: #ff7b00; font-size: 30px; font-weight: bold; margin-bottom: 10px;">{{$title}}</h2>
         <div class="section-divider"
              style="width: 100%; height: 2px; background-color: #ff7b00; margin-bottom: 15px;"></div>
         <div class="movie-list" id="original-movie-list" style="display: flex; flex-wrap: wrap ; gap: 10px; justify-content: center;overflow-x: auto;"

@@ -21,7 +21,7 @@ class HomeMovieServiceController extends Controller
     }
     public function getPhimKinhDi()
     {
-        return Movie::where('created_at', '>=', Carbon::now()->subDays(7))->where('active','1')
+        return Movie::where('active','1')
             ->whereHas('category', function ($query) {
                 $query->where('name', 'Kinh dị');
             })
@@ -32,11 +32,11 @@ class HomeMovieServiceController extends Controller
 
     public function getPhimMoi()
     {
-        return Movie::where('created_at', '>=', Carbon::now()->subDays(7))->where('active','1')->limit(3)->get();
+        return Movie::where('active', '1')->orderBy('created_at', 'desc')->limit(3)->get();
     }
 
     public function getHoatHinh(){
-        return Movie::where('created_at', '>=', Carbon::now()->subDays(7))->where('active','1')
+        return Movie::where('active','1')
             ->whereHas('category', function ($query) {
                 $query->where('name', 'Hoạt hình');
             })
@@ -47,7 +47,7 @@ class HomeMovieServiceController extends Controller
 
     public function getSlides()
     {
-        return Slider::select('thum')->where('active','1')->orderBy('sort', 'asc')->get();
+            return Slider::select('thum')->where('active','1')->orderBy('sort', 'asc')->get();
     }
 
     public function getCates()

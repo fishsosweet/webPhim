@@ -9,11 +9,15 @@ use \App\Http\Controllers\User\HomeKhoPhimController;
 use \App\Http\Controllers\User\Categories\CategoriesUserController;
 use \App\Http\Controllers\User\Login\LoginUserController;
 use \App\Http\Controllers\User\Login\OTP;
+use \App\Http\Controllers\User\Vip\VipController;
 use \App\Http\Controllers\User\Movies\MoviesUserController;
 use App\Http\Middleware\UserAuthMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\MovieFilter;
 use Livewire\Livewire;
+
+
+//Admin
 
 Route::get('login-admin',[LoginController::class,'getLogin'])->name('login');
 Route::post('login-admin',[LoginController::class,'postLogin'])->name('login-admin-post');
@@ -48,6 +52,11 @@ Route::middleware([\App\Http\Middleware\AdminAuthMiddleware::class])->group(func
 
    });
 });
+
+
+
+//User
+
  Route::get('khophim',[HomeKhoPhimController::class,'getHomeKhoPhim'])->name('homekhophim-get');
  Route::get('khophim/login',[LoginUserController::class,'getLoginUser'])->name('login-khophim-get');
 Route::post('khophim/login',[LoginUserController::class,'postLoginUser'])->name('login-khophim-post');
@@ -56,6 +65,9 @@ Route::get('logout',[LoginUserController::class,'getLogoutUser'])->name('logout-
 Route::get('otp',[OTP::class,'getOTP'])->name('otp-get');
 Route::post('otp',[OTP::class,'postOTP'])->name('otp-post');
 Route::post('otp-again',[OTP::class,'postOTPagain'])->name('otpagain-post');
+Route::get('khophim/vip/upgrade/',[VipController::class,'getVip'])->name('vip-get');
+Route::post('khophim/vip/upgrade/',[VipController::class,'postVipVNPay'])->name('vip-post');
+Route::get('khophim/vip/process/',[VipController::class,'vnpayReturn'])->name('vipprocess-get');
 Route::middleware([UserAuthMiddleware::class])->group(function () {
     Route::prefix('khophim')->group(function () {
         //TheLoai

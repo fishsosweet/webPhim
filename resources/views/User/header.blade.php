@@ -52,7 +52,20 @@
         </ul>
 
     </div>
-    @if(Auth::guard('web')->check())
+    <a href="{{route('vip-get')}}"
+       class="btn text-white fw-medium px-3 py-1 rounded shadow text-decoration-none"
+       style="border-radius:5px;color:white;text-decoration:none;background-color: #ff7b00; border: none; transition: 0.3s; min-width: 100px; max-width: 150px; text-align: center; display: inline-block;">
+        🚀 Nâng cấp tài khoản
+    </a>
+
+    <style>
+        .btn:hover {
+            background-color: #e66a00 !important;
+        }
+    </style>
+
+
+@if(Auth::guard('web')->check())
         <div class="user-dropdown">
             <img src="{{asset('/imgs/avt.jpg') }}" alt="Avatar" class="avatar">
             <div class="dropdown-content">

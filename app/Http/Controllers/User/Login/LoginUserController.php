@@ -12,7 +12,7 @@ use http\Env\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Mail;
-use MongoDB\Driver\Session;
+
 
 class LoginUserController extends Controller
 {
@@ -60,7 +60,7 @@ class LoginUserController extends Controller
             $mail=$request->emailregi;
             $name=$request->name;
             Mail::send('User.Login.otp',['otp'=>$otp],function ($email) use ($mail,$name) {
-                $email->subject('Xác nhận thành công đơn hàng!');
+                $email->subject('Xác nhận mã OTP!');
                 $email->to($mail,$name);
             });
             return redirect()->route('otp-get');

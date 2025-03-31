@@ -21,7 +21,7 @@ class MoviesUserController extends Controller
     {
         $validated = $request->validate([
             'movie_id' => 'required|exists:movies,id',
-            'content' => 'required|string|max:500', // Đảm bảo content là string
+            'content' => 'required|string|max:500',
         ]);
         $comment = Comment::create([
             'movie_id' => $validated['movie_id'],
@@ -39,7 +39,7 @@ class MoviesUserController extends Controller
         $comments = Comment::where('movie_id', $movie_id)
             ->where('id', '>', $latestCommentId)
             ->latest()
-            ->with('user') // Load thông tin user
+            ->with('user')
             ->get();
         return response()->json(['comments' => $comments]);
     }

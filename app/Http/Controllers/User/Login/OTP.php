@@ -54,9 +54,9 @@ class OTP extends Controller
         }
 
         $otp = rand(100000, 999999);
-        $user->update(['otp' => $otp, 'otp_expires' => now()->addMinutes(5)]);
+        $user->update(['otp' => $otp, 'otp_expires' => now()->addMinutes(1)]);
         Mail::send('User.Login.otp',['otp'=>$otp],function ($email) use ($user) {
-            $email->subject('Xác nhận thành công đơn hàng!');
+            $email->subject('Xác nhận mã OTP!');
             $email->to($user->email,$user->name);
         });
         return redirect()->back()->with('success', 'OTP đã được gửi lại!');
