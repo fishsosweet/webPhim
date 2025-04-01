@@ -21,7 +21,8 @@ class Movie extends Model
         'video_url',
         'age_restrict',
         'active',
-        'views'
+        'views',
+        'is_vip'
     ];
     public function category()
     {

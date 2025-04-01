@@ -309,6 +309,8 @@ body {
     width: 220px; /* Điều chỉnh kích thước ảnh */
     transition: transform 0.3s;
     margin: 0 15px; /* Thêm khoảng cách giữa các ảnh */
+    position: relative; /* Để gắn VIP vào góc */
+    overflow: hidden; /* Ngăn lòi phần thừa ra */
 }
 
 .movie:hover {
@@ -931,7 +933,7 @@ li {
         justify-content: center;
         text-align: center;
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 100px!important;
         width: auto;
         height: auto;
 
@@ -987,4 +989,28 @@ li {
     .card {
         width: 100%;
     }
+}
+.vip-banner {
+    position: absolute;
+    top: 40px;
+
+    right: -25px; /* Canh chỉnh lại vị trí cho đều */
+    background: linear-gradient(45deg, #ff9500, #ff7b00);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 35px;
+    transform: rotate(45deg);
+    transform-origin: top right;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    transition: all 0.3s ease-in-out;
+}
+
+.crown {
+    position: absolute;
+    top: -5px;
+    right: 0;
+    width: 30px;
+    transform: rotate(35deg);
 }

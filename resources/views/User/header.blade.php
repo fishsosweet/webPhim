@@ -67,6 +67,9 @@
 
 @if(Auth::guard('web')->check())
         <div class="user-dropdown">
+            @if(auth('web')->user()->vip_status)
+                <span class="crown">👑</span>
+            @endif
             <img src="{{asset('/imgs/avt.jpg') }}" alt="Avatar" class="avatar">
             <div class="dropdown-content">
                 <h4 style="color: white;position: relative;left: 10px">{{ Auth::user()->name }}</h4>

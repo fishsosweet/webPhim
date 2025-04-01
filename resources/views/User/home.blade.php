@@ -87,22 +87,42 @@
                         mới ></a></h2>
                 <div class="movie-slider">
                     @foreach($phimMoi as $phim)
-                        <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
-                           style="text-decoration: none; color: black">
-                            <div class="movie"
-                                 style="width: 220px; height: 300px; background-color:#e38f51; padding: 0px;">
+                        @if (Auth::user() && Auth::user()->vip_status)
+                            <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
+                               style="text-decoration: none; color: black">
+                                <div class="movie"
+                                     style="width: 220px; height: 300px; background-color:#e38f51; padding: 0px;">
+                                    @if($phim->is_vip)
+                                        <div class="vip-banner">VIP</div>
+                                    @endif
+                                    <img src="{{$phim->poster_url}}" style="width: 100%;height: 80%;">
+                                    <div class="play-button">
+                                        ▶
+                                    </div>
+                                    <div class="movie-info" style="position: relative;top:-20px">
+                                        <h5 class="truncate-2-lines">{{$phim->title}}</h5>
+                                        <span style="position: relative;top: -20px;color: black;">{{$phim->release_year}} | {{$phim->duration}}p</span>
+                                    </div>
 
-                                <img src="{{$phim->poster_url}}" style="width: 100%;height: 80%;">
-                                <div class="play-button">
-                                    ▶
                                 </div>
-                                <div class="movie-info" style="position: relative;top:-20px">
-                                    <h5 class="truncate-2-lines">{{$phim->title}}</h5>
-                                    <span style="position: relative;top: -20px;color: black;">{{$phim->release_year}} | {{$phim->duration}}p</span>
-                                </div>
+                            </a>
+                        @elseif(!$phim->is_vip)
+                            <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
+                               style="text-decoration: none; color: black">
+                                <div class="movie"
+                                     style="width: 220px; height: 300px; background-color:#e38f51; padding: 0px;">
+                                    <img src="{{$phim->poster_url}}" style="width: 100%;height: 80%;">
+                                    <div class="play-button">
+                                        ▶
+                                    </div>
+                                    <div class="movie-info" style="position: relative;top:-20px">
+                                        <h5 class="truncate-2-lines">{{$phim->title}}</h5>
+                                        <span style="position: relative;top: -20px;color: black;">{{$phim->release_year}} | {{$phim->duration}}p</span>
+                                    </div>
 
-                            </div>
-                        </a>
+                                </div>
+                            </a>
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -166,17 +186,31 @@
                     $i=0;
                 @endphp
                 @foreach($view as $phim)
-                    <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}" style="text-decoration: none">
-                        <div class="ranking-item">
-                            <span>{{++$i}}</span>
-                            <img src="{{asset($phim->poster_url)}}" style="width: 80px;height: 90px">
-                            <div>
-                                <h4 class="movie-title-home" style="position: relative;top: -20px;left: -110px">{{$phim->title}}</h4>
-                                <span class="movie-info-home" style="position: relative;top: -10px">{{$phim->release_year}} | {{$phim->duration}}p - {{$phim->views}} lượt xem</span>
-                            </div>
-                        </div>
-                    </a>
-                @endforeach
+                    @if(auth('web')->check())
+                        <a href="{{$phim->is_vip && !auth('web')->user()->vip_status ? route('vip-get') : route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
+                           style="text-decoration: none">
+                            @else
+                                <a href="{{route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
+                                   style="text-decoration: none">
+                                    @endif
+                                    <div class="ranking-item">
+                                        @if($phim->is_vip)
+                                            <span>{{++$i}} <br>VIP</span>
+                                        @else
+                                            <span>{{++$i}}</span>
+                                        @endif
+                                        <img src="{{asset($phim->poster_url)}}" style="width: 80px;height: 90px">
+                                        <div>
+                                            <h4 class="movie-title-home"
+                                                style="position: relative;top: -20px;left: -110px">{{$phim->title}}</h4>
+
+                                            <span class="movie-info-home" style="position: relative;top: -10px">{{$phim->release_year}} | {{$phim->duration}}p - {{$phim->views}} lượt xem</span>
+
+
+                                        </div>
+                                    </div>
+                                </a>
+                        @endforeach
             </div>
         </div>
     </div>
@@ -207,7 +241,7 @@
         </div>
     </div>
     <script>
-        document.getElementById("nextBtn").addEventListener("click", function() {
+        document.getElementById("nextBtn").addEventListener("click", function () {
             let group1 = document.getElementById("group1");
             let group2 = document.getElementById("group2");
 
@@ -215,7 +249,7 @@
             group2.style.display = "flex";
         });
 
-        document.getElementById("prevBtn").addEventListener("click", function() {
+        document.getElementById("prevBtn").addEventListener("click", function () {
             let group1 = document.getElementById("group1");
             let group2 = document.getElementById("group2");
 
