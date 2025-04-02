@@ -67,17 +67,27 @@
                             <label for="created_at" class="form-label">Ngày tạo</label>
                             <input type="datetime-local" class="form-control" name="created_at" id="created_at">
                         </div>
-
-                        <div class="mb-3" style="position: relative;top: 10px">
-                            <label for="lua_tuoi" class="form-label">Chọn độ tuổi xem phim:</label>
-                            <select id="luatuoi" name="luatuoi" class="form-select">
-                                <option value="P">P (Mọi lứa tuổi)</option>
-                                <option value="13+">13+</option>
-                                <option value="16+">16+</option>
-                                <option value="18+">18+</option>
-                            </select>
+                        <div class="d-flex align-items-center gap-4">
+                            <div class="mb-3" style="position: relative;top: 10px;width: 250px">
+                                <label for="lua_tuoi" class="form-label">Chọn độ tuổi xem phim:</label>
+                                <select id="luatuoi" name="luatuoi" class="form-select">
+                                    <option value="P">P (Mọi lứa tuổi)</option>
+                                    <option value="13+">13+</option>
+                                    <option value="16+">16+</option>
+                                    <option value="18+">18+</option>
+                                </select>
+                            </div>
+                            <label class="form-label" style="position: relative;top:22px">VIP</label>
+                            <div class="custom-control custom-radio" style="position: relative;top: 20px">
+                                <input class="custom-control-input" value="1" type="radio" id="is_vip" name="is_vip"
+                                       checked="">
+                                <label for="is_vip" class="custom-control-label">Có</label>
+                            </div>
+                            <div class="custom-control custom-radio" style="position: relative;top: 20px">
+                                <input class="custom-control-input" value="0" type="radio" id="none_vip" name="is_vip">
+                                <label for="none_vip" class="custom-control-label">Không</label>
+                            </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-md-6" style="position: relative;left: 60px">

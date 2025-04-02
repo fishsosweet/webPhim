@@ -87,11 +87,14 @@
                         mới ></a></h2>
                 <div class="movie-slider">
                     @foreach($phimMoi as $phim)
-                        @if (Auth::user() && Auth::user()->vip_status)
-                            <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
+                        @if(auth('web')->check())
+                            <a href="{{$phim->is_vip && !auth('web')->user()->vip_status ? route('vip-get') : route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
+                        @else
+                            <a href="{{route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
+                               @endif
                                style="text-decoration: none; color: black">
                                 <div class="movie"
-                                     style="width: 220px; height: 300px; background-color:#e38f51; padding: 0px;">
+                                     style="width: 220px; height: 300px; background-color: #e38f51; padding: 0px;">
                                     @if($phim->is_vip)
                                         <div class="vip-banner">VIP</div>
                                     @endif
@@ -106,11 +109,27 @@
 
                                 </div>
                             </a>
-                        @elseif(!$phim->is_vip)
-                            <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
+
+                            @endforeach
+                </div>
+            </div>
+
+            <div class="kho-phim">
+                <h2 class="section-title"><a class="nav-link" href="#" style="text-decoration: none;color: #ff7b00 ">Phim
+                        kinh dị ></a></h2>
+                <div class="movie-slider">
+                    @foreach($phimKinhDi as $phim)
+                        @if(auth('web')->check())
+                            <a href="{{$phim->is_vip && !auth('web')->user()->vip_status ? route('vip-get') : route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
+                        @else
+                            <a href="{{route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
+                               @endif
                                style="text-decoration: none; color: black">
                                 <div class="movie"
-                                     style="width: 220px; height: 300px; background-color:#e38f51; padding: 0px;">
+                                     style="width: 220px; height: 300px; background-color: #e38f51; padding: 0px;">
+                                    @if($phim->is_vip)
+                                        <div class="vip-banner">VIP</div>
+                                    @endif
                                     <img src="{{$phim->poster_url}}" style="width: 100%;height: 80%;">
                                     <div class="play-button">
                                         ▶
@@ -122,33 +141,7 @@
 
                                 </div>
                             </a>
-                        @endif
-                    @endforeach
-                </div>
-            </div>
-
-            <div class="kho-phim">
-                <h2 class="section-title"><a class="nav-link" href="#" style="text-decoration: none;color: #ff7b00 ">Phim
-                        kinh dị ></a></h2>
-                <div class="movie-slider">
-                    @foreach($phimKinhDi as $phim)
-                        <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
-                           style="text-decoration: none; color: black">
-                            <div class="movie"
-                                 style="width: 220px; height: 300px; background-color: #e38f51; padding: 0px;">
-
-                                <img src="{{$phim->poster_url}}" style="width: 100%;height: 80%;">
-                                <div class="play-button">
-                                    ▶
-                                </div>
-                                <div class="movie-info" style="position: relative;top:-20px">
-                                    <h5 class="truncate-2-lines">{{$phim->title}}</h5>
-                                    <span style="position: relative;top: -20px;color: black;">{{$phim->release_year}} | {{$phim->duration}}p</span>
-                                </div>
-
-                            </div>
-                        </a>
-                    @endforeach
+                            @endforeach
                 </div>
             </div>
 
@@ -157,23 +150,29 @@
                         hoạt hình ></a></h2>
                 <div class="movie-slider">
                     @foreach($phimHoatHinh as $phim)
-                        <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
-                           style="text-decoration: none; color: black">
-                            <div class="movie"
-                                 style="width: 220px; height: 300px; background-color: #e38f51; padding: 0px;">
+                        @if(auth('web')->check())
+                            <a href="{{$phim->is_vip && !auth('web')->user()->vip_status ? route('vip-get') : route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
+                        @else
+                            <a href="{{route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
+                               @endif
+                               style="text-decoration: none; color: black">
+                                <div class="movie"
+                                     style="width: 220px; height: 300px; background-color: #e38f51; padding: 0px;">
+                                    @if($phim->is_vip)
+                                        <div class="vip-banner">VIP</div>
+                                    @endif
+                                    <img src="{{$phim->poster_url}}" style="width: 100%;height: 80%;">
+                                    <div class="play-button">
+                                        ▶
+                                    </div>
+                                    <div class="movie-info" style="position: relative;top:-20px">
+                                        <h5 class="truncate-2-lines">{{$phim->title}}</h5>
+                                        <span style="position: relative;top: -20px;color: black;">{{$phim->release_year}} | {{$phim->duration}}p</span>
+                                    </div>
 
-                                <img src="{{$phim->poster_url}}" style="width: 100%;height: 80%;">
-                                <div class="play-button">
-                                    ▶
                                 </div>
-                                <div class="movie-info" style="position: relative;top:-20px">
-                                    <h5 class="truncate-2-lines">{{$phim->title}}</h5>
-                                    <span style="position: relative;top: -20px;color: black;">{{$phim->release_year}} | {{$phim->duration}}p</span>
-                                </div>
-
-                            </div>
-                        </a>
-                    @endforeach
+                            </a>
+                            @endforeach
                 </div>
             </div>
 
@@ -219,25 +218,33 @@
         <div class="section-divider"
              style="width: 100%; height: 2px; background-color: #ff7b00; margin-bottom: 15px;"></div>
 
-        <div class="movie-list-home" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+        <div class="movie-list-home" style="margin:5px;display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
             @foreach($randomPhim as $phim)
-                <a href="{{ route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
-                   style="text-decoration: none; color: black;margin-bottom: 10px">
-                    <div class="movie"
-                         style="width: 160px; height: 240px; background-color:#e38f51; padding: 0px; border-radius: 5px; position: relative; text-align: center;">
+                @if(auth('web')->check())
+                    <a href="{{$phim->is_vip && !auth('web')->user()->vip_status ? route('vip-get') : route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
+                       style="text-decoration: none;color: black">
+                @else
+                    <a href="{{route('khophim-watch-get', ['id' => $phim->id, 'name' => Str::slug($phim->title)]) }}"
+                       style="text-decoration: none; color: black">
+                        @endif
+                        <div class="movie"
+                             style="width: 160px; height: 240px; background-color:#e38f51; padding: 0px; border-radius: 5px; position: relative; text-align: center;">
+                            @if($phim->is_vip)
+                                <div class="vip-banner">VIP</div>
+                            @endif
+                            <img src="{{$phim->poster_url}}"
+                                 style="width: 100%; height: 80%; border-radius: 5px 5px 0 0;">
 
-                        <img src="{{$phim->poster_url}}" style="width: 100%; height: 80%; border-radius: 5px 5px 0 0;">
-
-                        <div class="play-button" style="width: 40px;height: 40px;font-size: 15px;">
-                            <p style="position: relative;top: -25px">▶</p>
+                            <div class="play-button" style="width: 40px;height: 40px;font-size: 15px;">
+                                <p style="position: relative;top: -25px">▶</p>
+                            </div>
+                            <div class="movie-info" style="position: relative;top:-20px">
+                                <h5 class="truncate-2-lines" style="font-size: 12px">{{$phim->title}}</h5>
+                                <span style="position: relative;top: -20px;font-size: 10px;color: black;">{{$phim->release_year}} | {{$phim->duration}}p</span>
+                            </div>
                         </div>
-                        <div class="movie-info" style="position: relative;top:-20px">
-                            <h5 class="truncate-2-lines" style="font-size: 12px">{{$phim->title}}</h5>
-                            <span style="position: relative;top: -20px;font-size: 10px;color: black;">{{$phim->release_year}} | {{$phim->duration}}p</span>
-                        </div>
-                    </div>
-                </a>
-            @endforeach
+                    </a>
+                    @endforeach
         </div>
     </div>
     <script>

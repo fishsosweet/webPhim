@@ -1,6 +1,7 @@
 <?php
 
 use \App\Http\Controllers\Admin\Login\LoginController;
+use \App\Http\Controllers\Admin\Account\AccountController;
 use \App\Http\Controllers\Admin\HomeController;
 use \App\Http\Controllers\Admin\Categories\CategoriesController;
 use \App\Http\Controllers\Admin\Movie\MovieController;
@@ -49,7 +50,9 @@ Route::middleware([\App\Http\Middleware\AdminAuthMiddleware::class])->group(func
        Route::get('edit-slider/{id}',[SliderController::class,'getSuaSlider'])->name('edit-slider-get');
        Route::post('edit-slider/{id}',[SliderController::class,'postSuaSlider'])->name('edit-slider-post');
        Route::delete('delete-slider/{id}',[SliderController::class,'postXoaSlider'])->name('delete-slider-post');
-
+        //Account
+       Route::get('list-account',[AccountController::class,'getList'])->name('add-account-get');
+       Route::delete('delete-account/{id}',[AccountController::class,'postXoaAccount'])->name('delete-account-post');
    });
 });
 

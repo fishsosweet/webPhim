@@ -12,7 +12,7 @@ class MovieServiceController extends Controller
 
     public function list()
     {
-        return Movie::select('id','title','description','release_year','duration','poster_url','age_restrict','active')->paginate(10);
+        return Movie::select('id','title','description','release_year','duration','poster_url','age_restrict','active','is_vip')->paginate(10);
     }
     public function post($request)
     {

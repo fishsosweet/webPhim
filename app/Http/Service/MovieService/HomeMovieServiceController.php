@@ -17,7 +17,7 @@ class HomeMovieServiceController extends Controller
     }
     public function randPhim()
     {
-        return Movie::inRandomOrder()->where('is_vip',0)->where('active','1')->limit(12)->get();
+        return Movie::inRandomOrder()->where('active','1')->limit(10)->get();
     }
     public function getPhimKinhDi()
     {
@@ -25,7 +25,6 @@ class HomeMovieServiceController extends Controller
             ->whereHas('category', function ($query) {
                 $query->where('name', 'Kinh dị');
             })
-            ->where('is_vip',0)
             ->orderBy('created_at', 'desc')
             ->limit(3)
             ->get();
@@ -33,7 +32,7 @@ class HomeMovieServiceController extends Controller
 
     public function getPhimMoi()
     {
-        return Movie::where('active', '1')->orderBy('created_at', 'desc')->where('is_vip',0)->limit(3)->get();
+        return Movie::where('active', '1')->orderBy('created_at', 'desc')->limit(3)->get();
     }
 
     public function getHoatHinh(){
@@ -42,7 +41,6 @@ class HomeMovieServiceController extends Controller
                 $query->where('name', 'Hoạt hình');
             })
             ->orderBy('created_at', 'desc')
-            ->where('is_vip',0)
             ->limit(3)
             ->get();
     }

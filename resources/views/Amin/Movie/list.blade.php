@@ -12,7 +12,7 @@
             <th>Ảnh bìa</th>
             <th>Thể loại</th>
             <th>Active</th>
-            <th>Update</th>
+            <th>Vip</th>
             <th style="width: 100px">&nbsp;</th>
         </tr>
         </thead>
@@ -37,7 +37,7 @@
                         @endforeach
                 </th>
                 <th style="background-color: white;color: black">{!!$movies->active == 0 ? '<span class="btn btn-danger btn-xs">NO</span>': '<span class="btn btn-success btn-xs">YES</span>'!!}</th>
-                <th style="background-color: white;color: black">{{$movies->updated_at}}</th>
+                <th style="background-color: white;color: black">{!!$movies->is_vip == 0 ? '<span class="btn btn-danger btn-xs">NO</span>': '<span class="btn btn-success btn-xs">YES</span>'!!}</th>
                 <th style="width: 100px; background-color: white; color: black;">
                     <div class="d-flex align-items-center">
                         <a class="btn btn-primary btn-sm me-1" href="{{ route('edit-movie-get', $movies->id) }}">

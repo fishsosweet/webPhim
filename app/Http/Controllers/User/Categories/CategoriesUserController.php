@@ -18,10 +18,6 @@ class CategoriesUserController extends Controller
     public function filter(Request $request)
     {
         $movies=$this->homeCategoryService->getFilter($request);
-        $user = auth('web')->user();
-        if (!$user->vip_status) {
-            $movies = $movies->where('is_vip', 0);
-        }
         if ($movies->isEmpty()) {
             return response()->json(['html' => '<p style="font-size: 20px; color: white">Không có phim phù hợp.</p>']);
         }
