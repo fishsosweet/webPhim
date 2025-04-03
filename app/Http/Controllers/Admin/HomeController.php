@@ -12,9 +12,11 @@ class HomeController extends Controller
     {
         $countMovies = Movie::count();
         $countUsers=User::where('role','user')->count();
+        $countVip=User::where('vip_status','1')->count();
         return view('Amin.home',[
             'countMovies' => $countMovies,
                 'countUsers' => $countUsers,
+                'countVip' => $countVip
             ]
         );
     }

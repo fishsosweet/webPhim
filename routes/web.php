@@ -3,6 +3,7 @@
 use \App\Http\Controllers\Admin\Login\LoginController;
 use \App\Http\Controllers\Admin\Account\AccountController;
 use \App\Http\Controllers\Admin\HomeController;
+use \App\Http\Controllers\Admin\Vip\VipAdminController;
 use \App\Http\Controllers\Admin\Categories\CategoriesController;
 use \App\Http\Controllers\Admin\Movie\MovieController;
 use \App\Http\Controllers\Admin\Slider\SliderController;
@@ -53,6 +54,11 @@ Route::middleware([\App\Http\Middleware\AdminAuthMiddleware::class])->group(func
         //Account
        Route::get('list-account',[AccountController::class,'getList'])->name('add-account-get');
        Route::delete('delete-account/{id}',[AccountController::class,'postXoaAccount'])->name('delete-account-post');
+       //Vip
+       Route::get('add-vip',[VipAdminController::class,'getThemVip'])->name('add-vip-get');
+       Route::post('add-vip',[VipAdminController::class,'postThemVip'])->name('add-vip-post');
+       Route::get('list-vip',[VipAdminController::class,'getListVip'])->name('list-vip-get');
+       Route::delete('delete-vip/{id}',[VipAdminController::class,'postXoaVip'])->name('delete-vip-post');
    });
 });
 

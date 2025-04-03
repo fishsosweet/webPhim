@@ -57,6 +57,18 @@
                                 Danh sách accounts</a></li>
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-sliders-h"></i> Gói VIP
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #495057">
+                        <li><a class="dropdown-item" href="{{route('add-vip-get')}}"><i class="fas fa-plus"></i> Thêm
+                                gói VIP</a></li>
+                        <li><a class="dropdown-item" href="{{route('list-vip-get')}}"><i class="fas fa-list"></i>
+                                Danh sách gói VIP</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <!-- Main content -->

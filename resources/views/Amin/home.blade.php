@@ -27,7 +27,7 @@
                 <div class="card bg-warning text-white">
                     <div class="card-body">
                         <h5 class="card-title">Số Tài Khoản VIP</h5>
-                        <h2></h2>
+                        <h2>{{$countVip}}</h2>
                     </div>
                 </div>
             </div>
