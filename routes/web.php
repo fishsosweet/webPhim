@@ -75,7 +75,7 @@ Route::get('otp',[OTP::class,'getOTP'])->name('otp-get');
 Route::post('otp',[OTP::class,'postOTP'])->name('otp-post');
 Route::post('otp-again',[OTP::class,'postOTPagain'])->name('otpagain-post');
 Route::get('khophim/vip/upgrade/',[VipController::class,'getVip'])->name('vip-get');
-Route::post('khophim/vip/upgrade/',[VipController::class,'postVipVNPay'])->name('vip-post');
+Route::post('khophim/vip/upgrade/{id}',[VipController::class,'postVipVNPay'])->name('vip-post');
 Route::get('khophim/vip/process/',[VipController::class,'vnpayReturn'])->name('vipprocess-get');
 Route::middleware([UserAuthMiddleware::class])->group(function () {
     Route::prefix('khophim')->group(function () {

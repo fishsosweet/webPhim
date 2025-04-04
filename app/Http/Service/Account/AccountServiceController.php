@@ -14,7 +14,7 @@ class AccountServiceController extends Controller
         try{
             $Account=User::find($id);
             $Account->delete();
-            Session::flash('success','Xóa tài kkoản thành công');
+            Session::flash('success','Xóa tài khoản thành công');
         }
         catch (\Exception $exception){
             Session::flash('error','Xóa thất bại!'.$exception->getMessage());

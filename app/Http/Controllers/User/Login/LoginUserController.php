@@ -33,6 +33,12 @@ class LoginUserController extends Controller
             'email' => $request->email,
             'password' => $request->password])) {
             $user =Auth::guard('web')->user();
+            if($user->vip_expiry<=now())
+            {
+                $user->vip_expiry = null;
+                $user->vip_status = 0;
+                $user->save();
+            }
             if($user->role=="user"){
                 return redirect()->route('homekhophim-get');
             }else{

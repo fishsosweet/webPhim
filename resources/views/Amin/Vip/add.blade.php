@@ -39,7 +39,14 @@
                             <option value="12">12 tháng</option>
                         </select>
                     </div>
-
+                    <div class="col-md-6">
+                        <label for="price" class="form-label">Giá:</label>
+                        <div class="input-group">
+                            <input type="number" id="price" name="price" class="form-control" min="1000"
+                                    value="0">
+                            <span class="input-group-text">VNĐ</span>
+                        </div>
+                    </div>
 
                 </div>
             </div>

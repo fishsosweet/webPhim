@@ -17,7 +17,7 @@ class AccountController extends Controller
     public function getList()
     {
         return view('Amin.Account.list',[
-            'Account' => User::where('role','user')->paginate(10),
+            'Account' => User::with('subscription:id,user_id,name')->where('role','user')->paginate(10),
         ]);
     }
 

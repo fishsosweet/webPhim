@@ -8,6 +8,7 @@
             <th>Tên</th>
             <th>Email</th>
             <th>VIP</th>
+            <th>Tên gói vip</th>
             <th>VIP_Expiry</th>
             <th>Created at</th>
             <th style="width: 100px">&nbsp;</th>
@@ -21,6 +22,7 @@
                 <th style="background-color: white;color: black">{{$account->name}}</th>
                 <th style="background-color: white;color: black">{{$account->email}}</th>
                 <th style="background-color: white;color: black">{!!$account->vip_status == 0 ? '<span class="btn btn-danger btn-xs">NO</span>': '<span class="btn btn-success btn-xs">YES</span>'!!}</th>
+                <th style="background-color: white;color: black">{{$account->subscription->name ?? 'Chưa đăng ký VIP'}}</th>
                 <th style="background-color: white;color: black">{{$account->vip_expiry}}</th>
                 <th style="background-color: white;color: black">{{$account->created_at}}</th>
                 <th style="width: 100px; background-color: white; color: black;">

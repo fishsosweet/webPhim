@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User\Vip;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,12 +12,15 @@ class VipController extends Controller
 {
     public function getVip()
     {
-        return view('User.Vip.buyvip');
+        return view('User.Vip.buyvip',[
+            'goiVip'=>Subscription::get(),
+        ]);
     }
 
-    public function postVipVNPay(Request $request)
+    public function postVipVNPay(Request $request,$id)
     {
         session()->put('user_id', auth('web')->user()->id);
+        session()->put('vip_id', $id);
         $data = $request->all();
         $code_cart = rand(00, 9999);
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
@@ -91,9 +95,12 @@ class VipController extends Controller
         $inputData = $request->all();
         if ($inputData['vnp_ResponseCode'] === "00") {
             $userId = session()->get('user_id');
+            $vipId= session()->get('vip_id');
             if ($userId) {
+                $vip=Subscription::find($vipId);
                 $user = User::find($userId);
                 $user->vip_status = 1;
+                $user->vip_expiry = now()->addMonths((int) $vip->plan);
                 $user->save();
                 session()->forget('user_id');
                 return view('User.Vip.processvip', ['status' => 1]);
