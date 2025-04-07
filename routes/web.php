@@ -67,6 +67,7 @@ Route::middleware([\App\Http\Middleware\AdminAuthMiddleware::class])->group(func
 //User
 
  Route::get('khophim',[HomeKhoPhimController::class,'getHomeKhoPhim'])->name('homekhophim-get');
+Route::post('khophim',[HomeKhoPhimController::class,'getSearch'])->name('search');
  Route::get('khophim/login',[LoginUserController::class,'getLoginUser'])->name('login-khophim-get');
 Route::post('khophim/login',[LoginUserController::class,'postLoginUser'])->name('login-khophim-post');
 Route::post('khophim/register',[LoginUserController::class,'postDangKyUser'])->name('register-khophim-post');

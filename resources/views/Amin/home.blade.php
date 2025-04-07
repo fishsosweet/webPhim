@@ -35,8 +35,8 @@
             <div class="col-md-3">
                 <div class="card bg-danger text-white">
                     <div class="card-body">
-                        <h5 class="card-title">Số Phim Đã Mua</h5>
-                        <h2></h2>
+                        <h5 class="card-title">Doanh thu</h5>
+                        <h2>{{ number_format($total, 0, ',', '.') }} VNĐ </h2>
                     </div>
                 </div>
             </div>

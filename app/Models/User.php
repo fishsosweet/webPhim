@@ -61,4 +61,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Subscription::class);
     }
+
+    public function totalVip()
+    {
+        return $this->hasMany(TotalVip::class);
+    }
+
 }

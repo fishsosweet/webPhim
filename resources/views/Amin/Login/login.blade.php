@@ -15,6 +15,7 @@
     <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Đăng nhập hệ thống</h2>
     @include('Amin.error')
     <form action="" method="POST">
+        @csrf
         <div class="mb-4">
             <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
             <input
@@ -54,7 +55,7 @@
         >
             Đăng nhập
         </button>
-        @csrf
+
     </form>
     <div class="mt-6 text-center">
         <p class="text-sm text-gray-600">Chưa có tài khoản? <a href="#" class="text-blue-500 hover:underline">Đăng ký

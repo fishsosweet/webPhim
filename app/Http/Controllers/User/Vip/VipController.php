@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User\Vip;
 
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
+use App\Models\TotalVip;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -101,6 +102,11 @@ class VipController extends Controller
                 $user = User::find($userId);
                 $user->vip_status = 1;
                 $user->vip_expiry = now()->addMonths((int) $vip->plan);
+                TotalVip::create([
+                    'user_id' => $userId,
+                    'subscription_id' => $vipId,
+                    'so_tien' => $inputData['vnp_Amount']/100, // vì vnpay trả về nhân 100
+                ]);
                 $user->save();
                 session()->forget('user_id');
                 return view('User.Vip.processvip', ['status' => 1]);

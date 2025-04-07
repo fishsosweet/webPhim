@@ -6,23 +6,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Subscription extends Model
+class TotalVip extends Model
 {
     use HasFactory;
+    public $table = 'total_vip';
     protected $fillable=[
-        'id',
-        'name',
-        'plan',
-        'price',
-        'active',
+        'user_id',
+        'subscription_id',
+        'so_tien'
     ];
     public $timestamps = false;
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    public function totalVip()
+
+    public function goiVip()
     {
-        return $this->hasMany(TotalVip::class, 'subscription_id');
+        return $this->belongsTo(Subscription::class, 'subscription_id');
     }
 }
+

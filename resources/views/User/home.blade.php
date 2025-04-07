@@ -5,8 +5,11 @@
             <h1>Nhiều phim, nhiều hơn và nhiều hơn nữa</h1>
             <p>Đăng ký ngay tài khoản thành viên</p>
             <div class="email-box">
-                <input type="email" placeholder="Tìm tên phim">
-                <button>Tìm</button>
+                <form method="POST">
+                    @csrf
+                <input type="text" placeholder="Tìm tên phim" name="search">
+                <button type="submit">Tìm</button>
+                </form>
             </div>
         </div>
     </div>
@@ -228,7 +231,7 @@
                        style="text-decoration: none; color: black">
                         @endif
                         <div class="movie"
-                             style="width: 160px; height: 240px; background-color:#e38f51; padding: 0px; border-radius: 5px; position: relative; text-align: center;">
+                             style="width: 160px; height: 240px; background-color:#e38f51; padding: 0px; border-radius: 5px; position: relative; text-align: center;margin: 10px">
                             @if($phim->is_vip)
                                 <div class="vip-banner">VIP</div>
                             @endif

@@ -32,6 +32,7 @@
                     <div class="mb-3" style="position: relative;top: 10px;width: 250px">
                         <label for="plan" class="form-label">Thời hạn:</label>
                         <select id="plan" name="plan" class="form-select">
+                            <option value="" disabled selected>Chọn thời hạn</option>
                             <option value="1">1 tháng</option>
                             <option value="3">3 tháng</option>
                             <option value="6">6 tháng</option>

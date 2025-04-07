@@ -17,7 +17,7 @@ class HomeMovieServiceController extends Controller
     }
     public function randPhim()
     {
-        return Movie::inRandomOrder()->where('active','1')->limit(10)->get();
+        return Movie::inRandomOrder()->where('active','1')->limit(12)->get();
     }
     public function getPhimKinhDi()
     {
